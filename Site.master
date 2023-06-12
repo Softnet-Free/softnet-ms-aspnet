@@ -1,0 +1,93 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/WebSite.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Default.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <table class="wide_table"><tr>
+            <td class="wide_table" style="text-align: left">
+                <div class="title">
+                    <h1>SOFTNET MS</h1>
+                </div>
+            </td>            
+            <td class="wide_table" style="text-align: right">
+                <table class="auto_table" style="display:inline;"><tr>
+                <td class="auto_table">
+                    <div class="loginDisplay">
+                        <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                            <AnonymousTemplate>                                                     
+                                <div style="border-radius: 5px; padding: 2px 5px; border: 1px solid white;">
+                                    <a href="~/account/login.aspx" ID="HeadLoginStatus" style="text-decoration: none; " runat="server">
+                                        <span style="white-space: nowrap;">Log In</span>
+                                    </a>
+                                </div>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <table class="auto_table" style="display:inline;"><tr>
+                                    <td class="auto_table">
+                                        <a href="~/account/settings.aspx" runat="server">
+                                            <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>
+                                        </a>
+                                    </td>
+                                    <td class="auto_table">
+                                        <div style="border-radius: 5px; padding: 2px 5px; margin-left: 8px; border: 1px solid white;">
+                                            <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" Font-Underline="false" LogoutText="Log Out" LogoutPageUrl="~/"/>
+                                        </div>
+                                    </td>
+                                </tr></table>
+                            </LoggedInTemplate>                        
+                        </asp:LoginView>
+                    </div>
+                </td>
+                <td class="auto_table">  
+                    <asp:Panel ID="P_NewUser" Visible="false" class="loginDisplay" runat="server">
+                        <div style="border-radius: 5px; padding: 2px 5px; border: 1px solid white;">
+                            <a href="~/newuser.aspx" runat="server" style="text-decoration: none;">
+                                <span style="white-space: nowrap;">New User</span>
+                            </a>
+                        </div>
+                    </asp:Panel>
+                </td>
+                </tr></table>
+            </td>
+            </tr></table>
+            <div class="clear hideSkiplink">
+                <table class="wide_table"><tr>
+                    <td class="wide_table" style="width: 100%">
+                        <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal"/>                            
+                    </td>
+                    <td class="wide_table" style="padding-right: 5px">
+                        <asp:HyperLink Visible="false" ID="HL_InvitationsReceived" Style="text-decoration: none;" NavigateUrl="~/contacts/recv_invs.aspx" runat="server">
+                            <div style="border-radius: 20px; background-color: white; padding: 4px 12px;">                        
+                                <asp:Label Style="color: #FF7400; white-space: nowrap; text-decoration: none;" ID="L_InvitationsReceived" runat="server" EnableViewState="false"/>
+                            </div>
+                        </asp:HyperLink>
+                    </td>
+                </tr></table>                 
+                <asp:Panel ID="P_AdminMenu" Visible="false" style="background-color: white; border-bottom: 1px solid #3C6C80;" runat="server"/> 
+                <asp:Panel ID="P_SearchMenu" Visible="false" style="background-color: white; border-bottom: 1px solid #3C6C80;" runat="server"/>                
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

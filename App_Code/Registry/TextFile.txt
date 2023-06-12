@@ -1,0 +1,7 @@
+﻿catch (SoftnetException ex)
+{
+    ExceptionHandler.exec(this, ex);
+}
+
+
+throw new InvalidIdentifierSoftnetException();

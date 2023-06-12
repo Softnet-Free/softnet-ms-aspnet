@@ -1,0 +1,1479 @@
+﻿span.h_name
+{
+    color: #666666;
+    font-variant: normal;
+}
+span.h1_name
+{
+    font-variant: normal;
+    font-size: 0.9em;
+}
+span.h2_name, a.h2_name
+{
+    font-variant: normal;
+    font-size: 0.9em;
+}
+span.h3_name, a.h3_name
+{
+    font-size: 0.85em;
+    font-variant: normal;
+}
+span.h4_name, a.h4_name
+{
+    font-size: 0.85em;
+    font-variant: normal;
+}
+span.domain_color, a.domain_color
+{
+    color: #DB8B00; 
+}
+span.site_name
+{
+    color: #666666;
+    font-size: 1.3em;
+    font-variant: normal;
+}
+span.name
+{
+    color: black;    
+}
+span.user
+{
+    color: #000;
+}
+span.warning
+{    
+    color: #CF5400;
+    font-size: 1.1em;
+} 
+a.warning
+{    
+    color: #D2691E;    
+} 
+span.description
+{    
+    color: #3C6C80;
+    font-size: 1.1em;
+} 
+span.user_disabled
+{
+    color: #EB3C00;
+}
+span.user_owner
+{
+    font-weight: bold;
+}
+span.user_guest
+{
+    font-weight: bold;
+}
+span.user_dedicated
+{
+    text-decoration: underline;
+}
+span.critical_action
+    {
+        color: #EB3C00;        
+    }    
+span.header_color
+    {
+        color: #A2C5D3;      
+    }
+span.header_name_color
+    {
+        color: #000000;      
+    }
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+h1.header_color
+    {
+        color: #A2C5D3;      
+    }
+h1.header_name_color
+    {
+        color: #000000;      
+    }
+h2.header_color
+    {
+        color: #A2C5D3;      
+    }
+h2.header_name_color
+    {
+        color: #000000;      
+    }
+span.title_legend
+    {
+        color: #7B7BF9;      
+    }
+span.title_name
+    {
+        color: #000;        
+    }
+h2.title_legend
+    {
+        color: #7B7BF9;      
+    }
+h3.title_legend
+    {
+        color: #7B7BF9;      
+    }
+span.client_key
+    {
+        color: #008080;                
+    }
+span.obj_label
+    {
+        color: #4F8DA6;
+        font-size: 1.0em;
+    }
+span.guest_page_url
+    {
+        color: #3399FF;
+        font-size: 1.0em;
+    }
+span.guest_uri
+    {
+        color: #000000;
+        font-size: 1.0em;
+    }    
+span.guest_shared_uri
+    {
+        color: #000000;
+        font-size: 1.0em;
+    }    
+span.client_uri
+    {
+        color: #000000;
+        font-size: 1.0em;
+    }
+span.param_name
+    {
+        color: #CF5400;
+        font-size: 1.0em;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none; 
+        -khtml-user-select: none; 
+        -moz-user-select: none;
+        -ms-user-select: none; 
+        user-select: none; 
+    }
+span.param_value
+    {
+        color: #000000;
+        font-size: 1.0em;
+    }
+span.legend
+    {
+        color: #7B7BF9;
+        font-size: 1.0em;
+    }
+span.caption
+    {
+        color: #686948;
+        font-size: 1.0em;
+    }
+span.gray_text
+    {
+        color: #686948;
+    }    
+span.yellow_text, a.yellow_text
+    {
+        color: #EA990C;
+    }
+span.rose_text, a.rose_text
+    {
+        color: #FF66CC;
+    }
+span.red_text, a.red_text
+    {
+        color: #FF0000;
+    }
+span.black_text
+{
+    color: #000;
+}
+span.orange_text, a.orange_text
+{
+    color: #E86100;
+}
+span.brown_text, a.brown_text
+{
+    color: #CF5400;
+}
+span.provider_color, a.provider_color
+{
+    color: #1F66FF;
+}
+span.admin_color, a.admin_color
+{
+    color: #FF00FF;
+}
+span.consumer_color, a.consumer_color
+{
+    color: #000000;
+}
+span.turquoise_text, a.turquoise_text
+{
+    color: #3C6C80;
+}
+span.contact_in_status_0
+    {
+        color: #686948;
+    }
+span.contact_in_status_1, a.contact_in_status_1
+    {
+        color: #FF66CC;
+    }
+span.contact_in_status_2, a.contact_in_status_2
+    {
+        color: #FF0000;
+    }
+span.contact_in_status_3
+    {
+        color: #FF0000;
+    }
+span.contact_disabled
+    {
+        color: #FF0000;
+    }
+span.delimeter
+    {
+        color: #000;
+    }
+span.site_type
+    {
+        color:#9700D5;
+    }
+span.service_type
+    {
+        color:#9700D5;
+    }
+span.client_description
+    {
+        color:#686948;
+    }    
+span.ping_label
+    {
+        color: green;
+    } 
+span.version
+    {
+        color:#E86100;
+    }
+span.user_role
+    {
+        color: #CB9801;
+    }
+span.user_default_role
+    {
+        color: #CB9801; 
+        text-decoration: underline;
+    }
+span.enabled_status
+    {
+        color: #009900;
+    }
+span.disabled_status
+    {
+        color: #BF0000;
+    }
+a.disabled_status
+    {
+        color: #BF0000;
+    }
+span.error_text
+    {
+        color: #CF0000;
+    }
+span.object_status
+    {
+        color: #FF0000;
+    }
+span.error_message
+    {
+        font-size: 1.1em;
+        color: #CF0000;
+    }    
+span.white_caption
+{
+    display: block;
+    padding-left: 15px;
+    padding-bottom: 2px;
+    color: White;
+    font-size: 1.1em;
+    }
+span.deepsky_caption
+{
+    display: block;
+    padding-left: 15px;
+    padding-bottom: 2px;
+    color: #3C6C80;
+    font-size: 1.1em;
+    }
+span.under_caption
+{
+    display: block;
+    padding-left: 15px;
+    padding-top: 2px;
+    color: White;
+    font-size: 1.1em;
+    }
+table.wide_table
+    {
+        width: 100%;
+        border-collapse: collapse;
+        border-width: 0px;        
+    }
+table.auto_table
+    {
+        width: auto;
+        border-collapse: collapse;
+        border-width: 0px;
+    }
+td.wide_table, td.auto_table
+    {
+        padding: 0px;
+        margin: 0px;
+        text-align: left;                
+    }
+td.wide_table_vtop, td.auto_table_vtop
+    {
+        padding: 0px;
+        margin: 0px;
+        text-align: left;
+        vertical-align: top;
+    }
+.width_50
+    {
+        width: 50%;
+    }    
+.width_25
+    {
+        width: 25%;
+    }        
+.width_75
+    {
+        width: 75%;
+    }        
+table.param_table
+    {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #A2C5D3;        
+    }
+td.param_table
+    {
+        padding: 6px;
+        margin: 0px;
+        text-align: left;                
+        border: 1px solid #A2C5D3;        
+    }    
+td.param_table.btn
+    {
+        padding: 6px;
+        margin: 0px;
+        text-align: left;                
+        border: 1px solid #A2C5D3;        
+    }    
+td.param_table.lnd
+    {
+        padding: 6px;
+        padding-left: 10px;
+        margin: 0px;
+        text-align: left;     
+        color: #3C6C80;           
+        border: 1px solid #A2C5D3;        
+    }    
+td.param_table.lnd.child
+    {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-right: 6px;
+        padding-left: 25px;
+        margin: 0px;
+        text-align: left;                
+        color: #3C6C80;           
+        border: 1px solid #A2C5D3;        
+    }    
+td.param_table.val
+    {
+        padding: 6px;
+        padding-left: 12px;
+        margin: 0px;
+        text-align: left;                
+        border: 1px solid #A2C5D3;        
+    }    
+td.param_table.val.edit
+    {
+        padding: 6px;
+        padding-left: 12px;
+        margin: 0px;
+        text-align: left;            
+        background-color: #D4FEB7;    
+        border: 1px solid #A2C5D3;        
+    }    
+td.param_table.val.edit input[type=text]
+    {
+        padding: 0px;
+        margin: 0px;                
+        outline:none;
+        color: #000;
+        background-color: #D4FEB7;    
+        border-width: 0px;        
+    }
+td.param_table.val.edit input[type=password]
+    {
+        padding: 0px;
+        margin: 0px;                
+        outline:none;
+        color: #000;
+        background-color: #D4FEB7;    
+        border-width: 0px;        
+    }                                                            
+td.param_table.val.not_set
+    {
+        padding: 6px;
+        margin: 0px;
+        background-color: #FFEFD0;                
+        border: 1px solid #A2C5D3;        
+    }    
+td.param_table.val.invalid
+    {
+        padding: 6px;
+        padding-left: 12px;
+        margin: 0px;
+        background-color: #FFEFD0;                
+        border: 1px solid #A2C5D3;        
+    }    
+
+/* HLinkButton, HLinkButton */
+
+div.HLinkButtonFilled, div.HLinkButton
+{
+    outline: none;    
+    border-radius: 20px;
+    border: 2px solid white;    
+}
+
+div.HLinkButton a
+{
+    
+    outline: none;
+    border-radius: 20px;
+    display:block;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    padding: 3px 12px 3px 12px;
+    margin: 0px;     
+    font-family: Arial;  
+    font-size: 1.2em;     
+    text-decoration: none;
+    white-space: nowrap;    
+}
+
+div.HLinkButtonFilled a
+{    
+    outline: none;
+    border-radius: 20px;
+    display:block;
+    color: white;
+    background-color: black;
+    padding: 5px 12px 5px 12px;
+    margin: 0px;     
+    font-family: Arial;  
+    font-size: 1.2em;     
+    text-decoration: none;
+    white-space: nowrap;    
+}
+
+/* ----- HLinkButton Gray ------ */ 
+
+div.HLinkButtonFilled.Gray a
+{
+    color: white;
+    background-color: #A2C5D3;   
+    border-color: #A2C5D3;
+}
+
+div:hover.HLinkButtonFilled.Gray
+{
+    border-color: #A2C5D3;
+    background-color: #A2C5D3;   
+}
+
+/* ----- HLinkButton Green ------ */ 
+
+div.HLinkButtonFilled.Green a
+{
+    color: white;
+    background-color: #7FBA00;   
+    border-color: #7FBA00;
+}
+
+div:hover.HLinkButtonFilled.Green
+{
+    border-color: #7FBA00;
+    background-color: #7FBA00;   
+}
+
+/* ----- HLinkButton Blue ------ */ 
+
+div.HLinkButtonFilled.Blue a
+{
+    color: white;
+    background-color: #15B4EE;   
+    border-color: #15B4EE;
+}
+
+div:hover.HLinkButtonFilled.Blue
+{
+    border-color: #15B4EE;
+    background-color: #15B4EE;   
+}
+
+/* ----- HLinkButton Green ------ */ 
+
+div.HLinkButton.Green a
+{
+    border-color: #7FBA00;
+    color: #7FBA00;
+}
+
+div:hover.HLinkButton.Green
+{
+    border-color: #7FBA00;
+    background-color: #7FBA00;
+}
+
+div:hover.HLinkButton.Green a
+{
+    background-color: #7FBA00;
+    border-color: #7FBA00;
+    color: White;
+}
+
+/* HLinkButton Blue */
+
+div.HLinkButton.Blue a
+{
+    border-color: #15B4EE;
+    color: #15B4EE;
+}
+
+div:hover.HLinkButton.Blue
+{
+    border-color: #15B4EE;
+    background-color: #15B4EE;
+}
+
+div:hover.HLinkButton.Blue a
+{
+    background-color: #15B4EE;
+    border-color: #15B4EE;
+    color: White;
+}
+
+/* HLinkButton Gray */
+
+div.HLinkButton.Gray a
+{
+    border-color: #A2C5D3;
+    color: #333;
+}
+
+div:hover.HLinkButton.Gray
+{
+    border-color: #A2C5D3;
+    background-color: #A2C5D3;
+}
+
+div:hover.HLinkButton.Gray a
+{
+    background-color: #A2C5D3;
+    border-color: #A2C5D3;
+    color: White;
+}
+
+/* HLinkButton RedOrange */
+
+div.HLinkButton.RedOrange a
+{
+    border-color: #15B4EE;
+    color: #EB3C00;
+}
+
+div:hover.HLinkButton.RedOrange
+{
+    border-color: #15B4EE;
+    background-color: #EB3C00;
+}
+
+div:hover.HLinkButton.RedOrange a
+{
+    background-color: #EB3C00;
+    border-color: #EB3C00;
+    color: White;
+}
+
+/* ----- HLinkButtonMini ------ */ 
+
+div.HLinkButtonMini
+{
+    outline: none;    
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid #C9C9C9;    
+}
+
+div.HLinkButtonMini a
+{    
+    outline: none;
+    border-radius: 12px;
+    display: block;    
+    color: black;
+    background-color: white;
+    padding: 2px 10px 2px 10px;
+    margin: 0px;     
+    font-family: Arial;  
+    font-size: 1.0em;     
+    text-decoration: none;
+    white-space: nowrap;    
+}
+
+/* ----- HLinkButtonMini Blue ------ */ 
+
+div.HLinkButtonMini.Blue
+{
+    color: #15B4EE;
+    border-color: #15B4EE;
+    background-color: white;   
+}
+
+div.HLinkButtonMini.Blue a
+{
+    color: #15B4EE;
+    border-color: #15B4EE;
+    background-color: white;   
+}
+
+div:hover.HLinkButtonMini.Blue
+{
+    color: white;
+    border-color: #15B4EE;
+    background-color: #15B4EE;   
+}
+
+div:hover.HLinkButtonMini.Blue a
+{
+    color: white;
+    border-color: #15B4EE;
+    background-color: #15B4EE;   
+}
+
+/* ----- HLinkButtonMini Green ------ */ 
+
+div.HLinkButtonMini.Green
+{
+    color: #7FBA00;
+    border-color: #7FBA00;
+    background-color: white;   
+}
+
+div.HLinkButtonMini.Green a
+{
+    color: #7FBA00;
+    border-color: #7FBA00;
+    background-color: white;   
+}
+
+div:hover.HLinkButtonMini.Green
+{
+    color: white;
+    border-color: #7FBA00;
+    background-color: #7FBA00;   
+}
+
+div:hover.HLinkButtonMini.Green a
+{
+    color: white;
+    border-color: #7FBA00;
+    background-color: #7FBA00;   
+}
+
+/* ----- HLinkButtonMini RedOrange ------ */ 
+
+div.HLinkButtonMini.RedOrange
+{
+    color: white;
+    background-color: #EB3C00;   
+    border-color: #EB3C00;
+}
+
+div.HLinkButtonMini.RedOrange a
+{
+    color: white;
+    background-color: #EB3C00;   
+    border-color: #EB3C00;
+}
+
+div:hover.HLinkButtonMini.RedOrange
+{
+    color: #EB3C00;
+    border-color: #EB3C00;
+    background-color: white;   
+}
+
+div:hover.HLinkButtonMini.RedOrange a
+{
+    color: #EB3C00;
+    border-color: #EB3C00;
+    background-color: white;   
+}
+
+/* ----- HLinkButtonMini Gray ------ */ 
+
+div.HLinkButtonMini.Gray
+{
+    color: white;
+    background-color: #696969;   
+    border-color: #696969;
+}
+
+div.HLinkButtonMini.Gray a
+{
+    color: white;
+    background-color: #696969;   
+    border-color: #696969;
+}
+
+div:hover.HLinkButtonMini.Gray
+{
+    color: #696969;
+    border-color: #696969;
+    background-color: white;   
+}
+
+div:hover.HLinkButtonMini.Gray a
+{
+    color: #696969;
+    border-color: #696969;
+    background-color: white;   
+}
+
+/* ----- HLinkButtonSquareMini ------ */ 
+
+div.HLinkButtonSquareMini
+{
+    border: 1px solid #C9C9C9;    
+}
+
+div.HLinkButtonSquareMini a
+{    
+    display: block;    
+    color: black;
+    background-color: white;
+    padding: 2px 2px 2px 2px;
+    margin: 0px;     
+    font-family: Arial;  
+    font-size: 1.0em;     
+    text-decoration: none;
+    white-space: nowrap;    
+    text-align: center;
+}
+
+/* ----- HLinkButtonSquareMini Red ------ */ 
+
+div.HLinkButtonSquareMini.Red
+{
+    color: #EB3C00;
+    border-color: #EB3C00;
+    background-color: white;   
+}
+
+div.HLinkButtonSquareMini.Red a
+{
+    color: #EB3C00;
+    border-color: #EB3C00;
+    background-color: white;   
+}
+
+div:hover.HLinkButtonSquareMini.Red
+{
+    color: white;
+    border-color: #EB3C00;
+    background-color: #EB3C00;   
+}
+
+div:hover.HLinkButtonSquareMini.Red a
+{
+    color: white;
+    border-color: #EB3C00;
+    background-color: #EB3C00;   
+}
+
+/* ----- HLinkButtonSquareMini Blue ------ */ 
+
+div.HLinkButtonSquareMini.Blue
+{
+    color: #15B4EE;
+    border-color: #15B4EE;
+    background-color: white;   
+}
+
+div.HLinkButtonSquareMini.Blue a
+{
+    color: #15B4EE;
+    border-color: #15B4EE;
+    background-color: white;   
+}
+
+div:hover.HLinkButtonSquareMini.Blue
+{
+    color: white;
+    border-color: #15B4EE;
+    background-color: #15B4EE;   
+}
+
+div:hover.HLinkButtonSquareMini.Blue a
+{
+    color: white;
+    border-color: #15B4EE;
+    background-color: #15B4EE;   
+}
+
+/* ----- SubmitButtonEmbodied ------ */ 
+
+div.SubmitButtonEmbodied
+{
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    background-color: #fff;
+}
+
+div.SubmitButtonEmbodied input[type=submit]
+{
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    margin: 0px;
+    padding: 1px 10px 1px 10px;   
+    font-family: Arial;  
+    font-weight: normal;
+    font-size: 1.2em;     
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+/* SubmitButtonEmbodied LightBlue */
+
+div.SubmitButtonEmbodied.LightBlue input[type=submit]
+{
+    border-color: #A2C5D3;
+    background-color: white;        
+    color: #3C6C80;
+}
+
+div:hover.SubmitButtonEmbodied.LightBlue
+{    
+    background-color: #A2C5D3;    
+}
+    
+div:hover.SubmitButtonEmbodied.LightBlue input[type=submit]
+{    
+    background-color: #A2C5D3;        
+    color: white;
+}
+
+div:active.SubmitButtonEmbodied.LightBlue
+{
+    border-color: white;    
+}
+
+/* SubmitButtonMiniEmbodied LightBlue */
+
+div.SubmitButtonMiniEmbodied
+{
+    width: 100%;
+    outline: none;
+    border-radius: 16px;
+    border: 2px solid #fff;
+    background-color: #fff;
+}
+
+div.SubmitButtonMiniEmbodied input[type=submit]
+{
+    width: 100%;
+    outline: none;
+    border-radius: 16px;
+    border: 1px solid #fff;
+    margin: 0px;
+    padding: 1px 10px 1px 10px;   
+    font-family: Arial;  
+    font-weight: normal;
+    font-size: 1.0em;     
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+/* SubmitButtonMiniEmbodied LightBlue */
+
+div.SubmitButtonMiniEmbodied.LightBlue input[type=submit]
+{
+    border-color: #A2C5D3;
+    background-color: white;        
+    color: #3C6C80;
+}
+
+div:hover.SubmitButtonMiniEmbodied.LightBlue
+{    
+    background-color: #A2C5D3;    
+}
+    
+div:hover.SubmitButtonMiniEmbodied.LightBlue input[type=submit]
+{    
+    background-color: #A2C5D3;        
+    color: white;
+}
+
+div:active.SubmitButtonMiniEmbodied.LightBlue
+{
+    border-color: white;    
+}
+
+/* ----- SubmitButtonFilled, SubmitButton ------ */ 
+
+div.SubmitButtonFilled, div.SubmitButton
+{
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    background-color: #fff;
+}
+
+div.SubmitButtonFilled input[type=submit]
+{
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+    margin: 0px; 
+    border-width: 0px;
+    padding: 4px 12px 4px 12px; 
+    font-family: Arial;  
+    font-size: 1.2em;     
+    font-weight: normal;
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+div.SubmitButton input[type=submit]
+{
+    width: 100%;
+    outline: none;
+    border-radius: 20px;
+    margin: 0px;
+    border: 2px solid #fff;
+    padding: 2px 10px 2px 10px;   
+    font-family: Arial;  
+    font-weight: normal;
+    font-size: 1.2em;     
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+/* ----- SubmitButtonFilled Green ------ */ 
+
+div.SubmitButtonFilled.Green
+{
+    background-color: #7FBA00;
+}
+
+div:hover.SubmitButtonFilled.Green
+{
+    border-color: #7FBA00;
+    background-color: #7FBA00;    
+}
+
+div.SubmitButtonFilled.Green input[type=submit]
+{
+    background-color: #7FBA00;        
+    color: white;
+}
+
+div:active.SubmitButtonFilled.Green
+{        
+    border-color: white;
+}
+
+/* ----- SubmitButtonFilled Blue ------ */ 
+
+div.SubmitButtonFilled.Blue
+{
+    background-color: #15B4EE; 
+}
+
+div:hover.SubmitButtonFilled.Blue
+{
+    border-color: #15B4EE;    
+}
+
+div.SubmitButtonFilled.Blue input[type=submit]
+{
+    background-color: #15B4EE;        
+    color: white;
+}
+
+div:active.SubmitButtonFilled.Blue
+{        
+    border-color: white;
+}
+
+/* ----- SubmitButton Blue ------ */ 
+
+div.SubmitButton.Blue input[type=submit]
+{
+    border-color: #15B4EE;
+    background-color: white;        
+    color: #15B4EE;
+}
+
+div:hover.SubmitButton.Blue
+{
+    border-color: #15B4EE;
+    background-color: #15B4EE;    
+}
+    
+div:hover.SubmitButton.Blue input[type=submit]
+{
+    border-color: #15B4EE;
+    background-color: #15B4EE;        
+    color: white;
+}
+
+div:active.SubmitButton.Blue
+{
+    border-color: white;    
+}
+
+/* ----- SubmitButton Green ------ */ 
+
+div.SubmitButton.Green input[type=submit]
+{
+    border-color: #7FBA00;
+    background-color: white;        
+    color: #7FBA00;
+}
+
+div:hover.SubmitButton.Green
+{
+    background-color: #7FBA00;        
+    border-color: #7FBA00;    
+}
+    
+div:hover.SubmitButton.Green input[type=submit]
+{
+    border-color: #7FBA00;
+    background-color: #7FBA00;        
+    color: white;
+}
+
+div:active.SubmitButton.Green
+{
+    border-color: white;    
+}
+
+/* ----- SubmitButton Gray ------ */ 
+
+div.SubmitButton.Gray input[type=submit]
+{
+    border-color: #C1DEE8;
+    background-color: white;            
+    color: #A2C3D0;
+}
+
+div:hover.SubmitButton.Gray
+{
+    border-color: #C1DEE8;
+    background-color: #C1DEE8;                
+}
+    
+div:hover.SubmitButton.Gray input[type=submit]
+{
+    border-color: #C1DEE8;
+    background-color: #C1DEE8;        
+    color: white;
+}
+
+div:active.SubmitButton.Gray
+{
+    border-color: white;    
+}
+
+/* ----- SubmitButton Yellow ------ */ 
+
+div.SubmitButton.Yellow input[type=submit]
+{
+    border-color: #F5B72F;
+    background-color: white;            
+    color: #F5B72F;
+}
+
+div:hover.SubmitButton.Yellow
+{
+    border-color: #F5B72F;
+    background-color: #F5B72F;                
+}
+    
+div:hover.SubmitButton.Yellow input[type=submit]
+{
+    border-color: #F5B72F;
+    background-color: #F5B72F;        
+    color: white;
+}
+
+div:active.SubmitButton.Yellow
+{
+    border-color: white;    
+}
+
+/* ----- SubmitButton RedOrange ------ */ 
+
+div.SubmitButton.RedOrange input[type=submit]
+{
+    border-color: #EB3C00;
+    background-color: white;            
+    color: #EB3C00;
+}
+
+div:hover.SubmitButton.RedOrange
+{
+    border-color: #EB3C00;
+    background-color: #EB3C00;                
+}
+    
+div:hover.SubmitButton.RedOrange input[type=submit]
+{
+    border-color: #EB3C00;
+    background-color: #EB3C00;        
+    color: white;
+}
+
+div:active.SubmitButton.RedOrange
+{
+    border-color: white;    
+}
+
+/* ----- SubmitButtonFilled RedOrange ------ */ 
+
+div:hover.SubmitButtonFilled.RedOrange
+{
+    border-color: #EB3C00;
+    background-color: #EB3C00;
+}
+
+div.SubmitButtonFilled.RedOrange input[type=submit]
+{
+    background-color: #EB3C00;        
+    color: white;
+}
+
+div:active.SubmitButtonFilled.RedOrange
+{        
+    border-color: #BB0C00;  
+}
+
+/* ----- SubmitButtonMini ------ */ 
+
+div.SubmitButtonMini
+{    
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid #fff;
+    background-color: #fff;
+}
+
+div.SubmitButtonMini input[type=submit]
+{
+    width: 100%;
+    outline: none;
+    border-radius: 16px;
+    border: 1px solid #fff;
+    margin: 0px;
+    padding: 1px 10px 1px 10px;
+    text-align: center;       
+    font-family: Arial;  
+    font-weight: normal;
+    font-size: 1.0em;     
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+/* ----- SubmitButtonMini Blue ------ */ 
+
+div.SubmitButtonMini.Blue
+{
+    border-color: #15B4EE;
+    background-color: white;            
+}
+
+div.SubmitButtonMini.Blue input[type=submit]
+{
+    color: #15B4EE;    
+    background-color: white;            
+}
+     
+div.SubmitButtonMini.Blue input:hover[type=submit]
+{
+    color: white;
+    background-color: #15B4EE;
+}
+
+/* ----- SubmitButtonMini Green ------ */ 
+
+div.SubmitButtonMini.Green
+{
+    border-color: #7FBA00;
+    background-color: white;            
+}
+
+div.SubmitButtonMini.Green input[type=submit]
+{
+    color: #7FBA00;    
+    background-color: white;            
+}
+     
+div.SubmitButtonMini.Green input:hover[type=submit]
+{
+    color: white;
+    background-color: #7FBA00;
+}
+
+/* ----- SubmitButtonMini RedOrange ------ */ 
+
+div.SubmitButtonMini.RedOrange
+{
+    border-color: #EB3C00;
+    background-color: white;            
+}
+
+div.SubmitButtonMini.RedOrange input[type=submit]
+{
+    color: #EB3C00;    
+    background-color: white;            
+}
+
+div.SubmitButtonMini.RedOrange input:hover[type=submit]
+{
+    color: white;
+    background-color: #EB3C00;
+}
+
+/* ----- SubmitButtonMini Blue Selected ------ */ 
+
+div.SubmitButtonMini.Blue.Selected
+{
+    border-color: #15B4EE;               
+}
+
+div.SubmitButtonMini.Blue.Selected input[type=submit]
+{
+    color: white;    
+    background-color: #15B4EE;            
+}
+
+div.SubmitButtonMini.Blue.Selected input:hover[type=submit]
+{
+    color: #15B4EE;
+    background-color: white;
+}
+
+/* ----- SubmitButtonMini Gray ------ */ 
+
+div.SubmitButtonMini.Gray
+{
+    border-color: #A2C5D3;
+    background-color: white;            
+}
+
+div.SubmitButtonMini.Gray input[type=submit]
+{
+    color: #82A5B3;    
+    background-color: white;            
+}
+
+div.SubmitButtonMini.Gray input:hover[type=submit]
+{
+    color: white;
+    background-color: #A2C5D3;
+}
+
+/* ----- SubmitButtonRectMini ------ */ 
+
+div.SubmitButtonRectMini
+{
+    border: 1px solid #fff;
+    background-color: #fff;
+}
+
+div.SubmitButtonRectMini input[type=submit]
+{
+    width: 100%;
+    outline: none;    
+    margin: 0px;
+    border: 1px solid white;    
+    text-align: center;   
+    font-family: Arial;  
+    font-weight: normal;
+    font-size: 1.0em;     
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+/* ----- SubmitButtonRectMini Blue ------ */ 
+
+div.SubmitButtonRectMini.Blue
+{
+    border-color: #15B4EE;
+    background-color: white;            
+}
+
+div.SubmitButtonRectMini.Blue input[type=submit]
+{
+    color: #15B4EE;    
+    background-color: white;            
+}
+     
+div.SubmitButtonRectMini.Blue input:hover[type=submit]
+{
+    color: white;
+    background-color: #15B4EE;
+}
+
+/* ----- SubmitButtonRectMini Gray ------ */ 
+
+div.SubmitButtonRectMini.Gray
+{
+    border-color: #A2C5D3;
+    background-color: white;            
+}
+
+div.SubmitButtonRectMini.Gray input[type=submit]
+{
+    color: #82A5B3;    
+    background-color: white;            
+}
+     
+div.SubmitButtonRectMini.Gray input:hover[type=submit]
+{
+    color: white;
+    background-color: #A2C5D3;
+}
+
+/* ----- SubmitButtonSquare ------ */ 
+
+div.SubmitButtonSquare
+{    
+    border: 1px solid #fff;
+    background-color: #fff;    
+}
+
+div.SubmitButtonSquare input[type=submit]
+{
+    width: 100%;
+    outline: none;    
+    margin: 0px;
+    border: 0px solid white;
+    padding: 2px 5px 2px 5px; 
+    text-align: center;   
+    font-family: Arial;  
+    font-weight: normal;
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+/* ----- SubmitButtonSquare Blue ------ */ 
+
+div.SubmitButtonSquare.Blue
+{       
+    border-color: #15B4EE;    
+}
+
+div.SubmitButtonSquare.Blue input[type=submit]
+{
+    color: #15B4EE;
+    background-color: white;    
+}
+    
+div.SubmitButtonSquare.Blue input:hover[type=submit]
+{
+    color: white;
+    background-color: #15B4EE;        
+}
+
+/* ----- SubmitButtonSquare Selected Blue ------ */ 
+
+div.SubmitButtonSquare.Selected.Blue input[type=submit]
+{
+    color: white;
+    background-color: #15B4EE;    
+}
+    
+div.SubmitButtonSquare.Selected.Blue input:hover[type=submit]
+{
+    color: #15B4EE;
+    background-color: white;        
+}
+
+/* ----- SubmitButtonSquareMini ------ */ 
+
+div.SubmitButtonSquareMini
+{
+    width: 20px;
+    border: 1px solid #fff;
+    background-color: #fff;
+}
+
+div.SubmitButtonSquareMini input[type=submit]
+{
+    width: 100%;
+    outline: none;    
+    margin: 0px;
+    border: 0px solid white;
+    padding: 2px 2px 2px 2px; 
+    text-align: center;   
+    font-family: Arial;  
+    font-weight: normal;
+    font-size: 1.0em;     
+    white-space: nowrap;
+    cursor: pointer;    
+}
+
+/* ----- SubmitButtonSquareMini RedOrange ------ */ 
+
+div.SubmitButtonSquareMini.RedOrange
+{       
+    border-color: #EB3C00;    
+}
+
+div.SubmitButtonSquareMini.RedOrange input[type=submit]
+{
+    color: #EB3C00;
+    background-color: white;    
+}
+    
+div.SubmitButtonSquareMini.RedOrange input:hover[type=submit]
+{
+    color: white;
+    background-color: #EB3C00;        
+    border-color: white;
+}

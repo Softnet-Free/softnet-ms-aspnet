@@ -1,0 +1,13 @@
+﻿	<AnonymousTemplate>                        
+        <div style="display:inline; border-radius: 5px; padding: 2px 5px; border: 1px solid white;">
+            <a href="~/account/login.aspx" ID="HeadLoginStatus" style="text-decoration: none; " runat="server">
+                <span style="white-space: nowrap;">Log In</span>
+            </a>
+        </div>
+    </AnonymousTemplate>
+
+
+	<p>
+        Please enter your username and password.
+        <asp:HyperLink ID="RegisterHyperLink" runat="server" EnableViewState="false">Register</asp:HyperLink> if you don't have an account.
+    </p>

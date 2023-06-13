@@ -33,6 +33,13 @@ span.site_name
     font-size: 1.3em;
     font-variant: normal;
 }
+div.default_page_hints
+{
+    margin-top: 7px; 
+    margin-right: 2px; 
+    font-size: 1.2em; 
+    color: #3C6C80;
+}
 span.name
 {
     color: black;    

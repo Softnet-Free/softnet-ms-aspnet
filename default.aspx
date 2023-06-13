@@ -58,7 +58,7 @@
                 <li>If you don't have an account, go to the <a href="~/newuser.aspx" runat="server" style="text-decoration: none;">New User</a> page;</li>
                 <li>At <a href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
                 <li>At <a href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
-                <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use this management tool.</li>
+                <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
             </ul>
         </asp:Panel>
         <asp:Panel ID="Panel_AnonymNoFreeSigningUp" Visible="false" ViewStateMode="Disabled" Style="margin-top: 7px; margin-right: 2px;" runat="server">

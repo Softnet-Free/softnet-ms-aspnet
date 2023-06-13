@@ -53,15 +53,16 @@
                 </asp:Panel>
             </td>
         </tr></table>
-        <asp:Panel ID="Panel_AnonymFreeSigningUp" Visible="false" ViewStateMode="Disabled" Style="margin-top: 7px; margin-right: 2px;" runat="server">
+        <asp:Panel ID="Panel_AnonymFreeSigningUp" Visible="false" ViewStateMode="Disabled" Style="margin-top: 7px; margin-right: 2px; font-size: 1.2em; color: #3C6C80" runat="server">
             <ul>
-                <li>If you don't have an account yet, go to <a href="~/newuser.aspx" runat="server" style="text-decoration: none;">New User</a>, confirm your email address, and create an account.</li>
-                <li>Services with guest access published by a specific owner can be found in
-                    <a href="~/public/services/search.aspx?filter=+" runat="server" style="text-decoration: none;">Public Services</a>.</li>
-                <li>Milk</li>
+                <li>If you don't have an account, go to the <a href="~/newuser.aspx" runat="server" style="text-decoration: none;">New User</a> page;</li>
+                <li>At <a href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
+                <li>At <a href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
+                <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use this system.</li>
             </ul>
         </asp:Panel>
         <asp:Panel ID="Panel_AnonymNoFreeSigningUp" Visible="false" ViewStateMode="Disabled" Style="margin-top: 7px; margin-right: 2px;" runat="server">
+
         </asp:Panel>
         <asp:Panel ID="Panel_AuthorizedProviderNoItems" Visible="false" ViewStateMode="Disabled" Style="margin-top: 7px; margin-right: 2px;" runat="server">
         </asp:Panel>

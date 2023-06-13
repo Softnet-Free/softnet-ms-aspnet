@@ -94,7 +94,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
                 MenuItem menuItem1 = new MenuItem();
                 menuItem1.NavigateUrl = "~/admin/mgt/search.aspx";
-                menuItem1.Text = "User management";
+                menuItem1.Text = "User Management";
                 adminMenu.Items.Add(menuItem1);
 
                 MenuItem menuItem2 = new MenuItem();
@@ -133,17 +133,17 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
                 MenuItem menuItem1 = new MenuItem();
                 menuItem1.NavigateUrl = "~/public/services/search.aspx";
-                menuItem1.Text = "Public services";
+                menuItem1.Text = "Public Services";
                 searchMenu.Items.Add(menuItem1);
 
                 MenuItem menuItem2 = new MenuItem();
                 menuItem2.NavigateUrl = "~/public/myclients/domains.aspx";
-                menuItem2.Text = "My guest clients";
+                menuItem2.Text = "My Guest Clients";
                 searchMenu.Items.Add(menuItem2);
 
                 MenuItem menuItem3 = new MenuItem();
                 menuItem3.NavigateUrl = "~/public/clients/domains.aspx";
-                menuItem3.Text = "Guest clients by email";
+                menuItem3.Text = "Guest Clients by EMail";
                 searchMenu.Items.Add(menuItem3);
 
                 if (path.StartsWith("~/public/services/", StringComparison.InvariantCultureIgnoreCase))
@@ -182,12 +182,12 @@ public partial class SiteMaster : System.Web.UI.MasterPage
             NavigationMenu.Items.Add(menuItem_Home);
 
             menuItem_PublicServices.NavigateUrl = "~/public/services/search.aspx";
-            menuItem_PublicServices.Text = "Public services";
+            menuItem_PublicServices.Text = "Public Services";
             NavigationMenu.Items.Add(menuItem_PublicServices);
 
             menuItem_GuestClients = new MenuItem();
             menuItem_GuestClients.NavigateUrl = "~/public/clients/domains.aspx";
-            menuItem_GuestClients.Text = "Guest clients by email";
+            menuItem_GuestClients.Text = "Guest Clients by EMail";
             NavigationMenu.Items.Add(menuItem_GuestClients);
 
             string path = Request.AppRelativeCurrentExecutionFilePath;

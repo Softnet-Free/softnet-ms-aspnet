@@ -53,24 +53,26 @@
                 </asp:Panel>
             </td>
         </tr></table>
-        <asp:Panel ID="Panel_AnonymFreeSigningUp" Visible="false" ViewStateMode="Disabled" class="default_page_hints" runat="server">
-            <ul>
-                <li>If you don't have an account, go to <a href="~/newuser.aspx" runat="server" style="text-decoration: none;">New User</a>;</li>
-                <li>On <a href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
-                <li>On <a href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
-                <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
-            </ul>
-        </asp:Panel>
-        <asp:Panel ID="Panel_AnonymNoFreeSigningUp" Visible="false" ViewStateMode="Disabled" class="default_page_hints" runat="server">
-            <ul>
-                <li>On <a id="A2" href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
-                <li>On <a id="A3" href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
-                <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
-            </ul>
-        </asp:Panel>
-        <asp:Panel ID="Panel_AuthorizedProviderNoItems" Visible="false" ViewStateMode="Disabled" class="default_page_hints" runat="server">
-        </asp:Panel>
-        <asp:Panel ID="Panel_AuthorizedConsumerNoItems" Visible="false" ViewStateMode="Disabled" class="default_page_hints" runat="server">
-        </asp:Panel>
+        <div style="margin-top: 7px; margin-right: 2px; font-size: 1.2em; color: #3C6C80;">
+            <asp:Panel ID="Panel_AnonymFreeSigningUp" Visible="false" ViewStateMode="Disabled" runat="server">
+                <ul>
+                    <li class="default_page_hints">If you don't have an account, go to <a href="~/newuser.aspx" runat="server" style="text-decoration: none;">New User</a>;</li>
+                    <li>On <a href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
+                    <li>On <a href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
+                    <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
+                </ul>
+            </asp:Panel>
+            <asp:Panel ID="Panel_AnonymNoFreeSigningUp" Visible="false" ViewStateMode="Disabled" runat="server">
+                <ul>
+                    <li>On <a id="A2" href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
+                    <li>On <a id="A3" href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
+                    <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
+                </ul>
+            </asp:Panel>
+            <asp:Panel ID="Panel_AuthorizedProviderNoItems" Visible="false" ViewStateMode="Disabled" runat="server">
+            </asp:Panel>
+            <asp:Panel ID="Panel_AuthorizedConsumerNoItems" Visible="false" ViewStateMode="Disabled" runat="server">
+            </asp:Panel>
+        </div>
     </div>            
 </asp:Content>

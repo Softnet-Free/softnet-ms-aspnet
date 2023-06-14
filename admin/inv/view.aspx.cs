@@ -38,7 +38,7 @@ public partial class admin_inv_view : System.Web.UI.Page
             smtpClient.EnableSsl = mailingData.smtpRequiresSSL;
             smtpClient.Timeout = 20000;
 
-            string body = "<span style='font-weight:bold;'>{0}</span> invited you to sign up with <a href='{1}'>{2}</a>.<br/>" +
+            string body = "<span style='font-weight:bold;'>{0}</span> invites you to sign up with <a href='{1}'>{2}</a>.<br/>" +
                 "If you like to accept the invitation click <a href='{3}'>sign up</a>";
 
             string invitationUrl = string.Format("{0}/invitee.aspx?key={1}", mailingData.siteUrl, m_data.ikey);

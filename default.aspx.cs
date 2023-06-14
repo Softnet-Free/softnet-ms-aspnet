@@ -186,17 +186,7 @@ public partial class _default : System.Web.UI.Page
             if (m_anyoneCanRegister)
                 Panel_AnonymFreeSigningUp.Visible = true;
             else
-            {
                 Panel_AnonymNoFreeSigningUp.Visible = true;
-
-                if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings.Get("AdminEMail")))
-                {
-                    InvitationHint.Visible = true;
-                    string email = System.Configuration.ConfigurationManager.AppSettings.Get("AdminEMail");
-                    InvitationHint.InnerHtml = String.Format("If you don't have an account, ask the administrator for invitatoin: <span class='brown_text'>{0}</span>", email);
-                        
-                }
-            }
         }
     }
 }

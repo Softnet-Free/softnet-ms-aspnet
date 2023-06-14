@@ -64,7 +64,7 @@
             </asp:Panel>
             <asp:Panel ID="Panel_AnonymNoFreeSigningUp" Visible="false" ViewStateMode="Disabled" runat="server">
                 <ul>
-                    <li id="InvitationHint" visible="false" runat="server"></li>
+                    <li>If you don't have an account, ask the administrator for invitatoin;</li>
                     <li>On <a id="A2" href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
                     <li>On <a id="A3" href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
                     <li><a href="https://softnet-free.github.io/softnet-ms-guide/" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>

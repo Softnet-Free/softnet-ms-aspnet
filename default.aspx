@@ -65,14 +65,23 @@
             <asp:Panel ID="Panel_AnonymNoFreeSigningUp" Visible="false" ViewStateMode="Disabled" runat="server">
                 <ul>
                     <li>If you don't have an account, ask the administrator for invitatoin;</li>
-                    <li>On <a id="A2" href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
-                    <li>On <a id="A3" href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
+                    <li>On <a href="~/public/services/search.aspx" runat="server" style="text-decoration: none;">Public Services</a>, you can find public services with anonymous access;</li>
+                    <li>On <a href="~/public/clients/domains.aspx" runat="server" style="text-decoration: none;">Guest Clients by EMail</a>, you can manage your stateful guest clients by email;</li>
                     <li><a href="https://softnet-free.github.io/softnet-ms-guide/" target="_blank" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
                 </ul>
             </asp:Panel>
             <asp:Panel ID="Panel_AuthorizedProviderNoItems" Visible="false" ViewStateMode="Disabled" runat="server">
+                <ul>
+                    <li>To deploy an IoT project, go to <a href="~/domains/default.aspx" runat="server" style="text-decoration: none;">Domains</a>;</li>
+                    <li>To establish partneships with other owners, go to <a href="~/contacts/default.aspx" runat="server" style="text-decoration: none;">Contacts</a>;</li>
+                    <li><a href="https://softnet-free.github.io/softnet-ms-guide/" target="_blank" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
+                </ul>                
             </asp:Panel>
             <asp:Panel ID="Panel_AuthorizedConsumerNoItems" Visible="false" ViewStateMode="Disabled" runat="server">
+                <ul>
+                    <li>To establish partneships with other owners, go to <a id="A2" href="~/contacts/default.aspx" runat="server" style="text-decoration: none;">Contacts</a>;</li>
+                    <li><a href="https://softnet-free.github.io/softnet-ms-guide/" target="_blank" style="text-decoration: none;">The User Guide to Softnet Management System</a> explains how to use Softnet MS.</li>
+                </ul>                
             </asp:Panel>
         </div>
     </div>            

@@ -27,7 +27,7 @@ public partial class newuser : System.Web.UI.Page
             string retString = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("ret");
             m_urlBuider = new UrlBuider(retString);
 
-            this.Title = string.Format("New user <- {0}", m_userDataset.domainName);
+            this.Title = string.Format("New User - {0}", m_userDataset.domainName);
 
             HL_Domain.NavigateUrl = string.Format("~/domains/domain.aspx?did={0}", m_userDataset.domainId);
             HL_Domain.Text = m_userDataset.domainName;

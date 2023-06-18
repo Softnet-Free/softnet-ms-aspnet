@@ -26,7 +26,7 @@ public partial class newsite : System.Web.UI.Page
             string retString = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("ret");
             m_urlBuider = new UrlBuider(retString);
 
-            this.Title = string.Format("New site <- {0}", m_domainItem.domainName);
+            this.Title = string.Format("New Site - {0}", m_domainItem.domainName);
 
             HL_Domain.NavigateUrl = string.Format("~/domains/domain.aspx?did={0}", m_domainItem.domainId);
             HL_Domain.Text = m_domainItem.domainName;

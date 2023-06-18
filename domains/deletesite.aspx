@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="deletesite.aspx.cs" Inherits="deletesite" MasterPageFile="~/Site.master" Title="Delete site" EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="deletesite.aspx.cs" Inherits="deletesite" MasterPageFile="~/Site.master" Title="Delete Site" EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">   
 </asp:Content>

@@ -425,7 +425,7 @@ public partial class ssite : System.Web.UI.Page
                 HtmlGenericControl span = new HtmlGenericControl("span");
                 P_SiteEdit.Controls.Add(span);
                 span.Attributes["style"] = "display: block; margin-top: 10px; color: #3C6C80";
-                span.InnerHtml = "<span style='color: #CF5400'>Attention!</span> All services on a multi-service site should be of the same service type.";
+                span.InnerHtml = "<span style='color: #CF5400'>Attention!</span> All services on a multi-service site must be of the same type.";
             }
         }
 

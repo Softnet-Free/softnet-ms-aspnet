@@ -22,7 +22,7 @@
             </tr></table>        
         </td>
         <td class="wide_table" style="width: 400px; padding-top: 0px; vertical-align:top;">
-            <h2 style="text-align: center">the contact domain <asp:Label CssClass='h2_name domain_color' ID="L_Domain" runat="server"/></h2> 
+            <h2 style="text-align: center">contact domain <asp:Label CssClass='h2_name domain_color' ID="L_Domain" runat="server"/></h2> 
         </td>
         <td class="wide_table" style="width:199px; vertical-align:top;">
             <table  class="wide_table"><tr>

@@ -26,7 +26,7 @@ public partial class srclients : System.Web.UI.Page
             m_siteDataset = new SiteClientsDataset();
             SoftnetRegistry.GetRSiteClientsDataset(this.Context.User.Identity.Name, siteId, m_siteDataset);
 
-            if (m_siteDataset.siteData.siteKind != 1 || m_siteDataset.services.Count != 1 || m_siteDataset.siteData.constructed == false || m_siteDataset.siteData.rolesSupported == false)
+            if (m_siteDataset.siteData.siteKind != 1 || m_siteDataset.services.Count != 1 || m_siteDataset.siteData.structured == false || m_siteDataset.siteData.rolesSupported == false)
             {
                 Response.Redirect(string.Format("~/domains/domain.aspx?did={0}", m_siteDataset.domainId));
                 return;
@@ -74,7 +74,7 @@ public partial class srclients : System.Web.UI.Page
         UserData userData = (UserData)button.Args[0];
         try
         {
-            long clientId = SoftnetRegistry.CreateClient(m_siteData.siteId, userData.userId);
+            long clientId = SoftnetRegistry.CreateClient(m_siteDataset.ownerId, m_siteData.siteId, userData.userId);
             Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/domains/srclients.aspx?sid={0}&cid={1}&cpr=1", m_siteData.siteId, clientId)));
         }
         catch (SoftnetException ex)
@@ -89,7 +89,7 @@ public partial class srclients : System.Web.UI.Page
         UserData userData = (UserData)button.Args[0];
         try
         {
-            long clientId = SoftnetRegistry.CreateGuestClient2(m_siteDataset.ownerId, m_siteData.siteId, userData.userId);
+            long clientId = SoftnetRegistry.CreateGuestClient(m_siteDataset.ownerId, m_siteData.siteId, userData.userId);
             Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/domains/srclients.aspx?sid={0}&cid={1}&cpr=1", m_siteData.siteId, clientId)));
         }
         catch (SoftnetException ex)
@@ -934,13 +934,13 @@ public partial class srclients : System.Web.UI.Page
 
                 Label labelContactName = new Label();
                 panelUser.Controls.Add(labelContactName);
-                labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + allowedUser.userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(allowedUser.userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                 labelContactName.CssClass = "contact_in_status_0";
 
                 if (allowedUser.userData.contactData.status == 1)
                 {
                     labelContactName.CssClass = "contact_in_status_1";
-                    labelContactName.ToolTip = "Your partner has deleted the contact.";
+                    labelContactName.ToolTip = "Your partner deleted the contact.";
                 }
                 else if (allowedUser.userData.contactData.status == 2)
                 {

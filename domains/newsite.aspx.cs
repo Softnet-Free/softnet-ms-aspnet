@@ -50,7 +50,14 @@ public partial class newsite : System.Web.UI.Page
     {
         try
         {
-            string siteName = TB_SiteDescription.Text.Trim();            
+            string siteName = TB_SiteDescription.Text.Trim();
+            if (siteName.Length > Constants.MaxLength.site_description)
+            {
+                L_Error.Visible = true;
+                L_Error.Text = string.Format("The site description must not contain more than {0} characters.", Constants.MaxLength.site_description);
+                return;
+            }
+            
             long siteId = SoftnetRegistry.CreateSite(m_domainItem.domainId, siteName);
             string retUrl = m_urlBuider.getBackUrl();
             if (m_urlBuider.hasBackUrl())

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="editcont.aspx.cs" Inherits="contacts_editcont" Title="Contact editor" MasterPageFile="~/Site.master" EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="editcont.aspx.cs" Inherits="contacts_editcont" Title="Contact Editor" MasterPageFile="~/Site.master" EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -31,10 +31,13 @@
                     <span style="display: block; color: white; padding-left: 6px; padding-bottom: 2px">contact name</span>
                     <asp:TextBox ID="TB_ContactName" AutoComplete="off" runat="server" Style="border-width: 0px; outline:none; width:400px; margin: 0px; padding: 3px;"></asp:TextBox>
                 </div>
+                <asp:Label ID="L_ContactNameError" Visible="false" runat="server" Text="" Style="display:block; margin-top:10px; color:#9F0000"></asp:Label>
+
                 <div style="margin-top: 10px">
                     <span style="display: block; color: white; padding-left: 6px; padding-bottom: 2px">user default name</span>
-                    <asp:TextBox ID="TB_AssigningName" AutoComplete="off" runat="server" Style="border-width: 0px; outline:none; width:400px; margin: 0px; padding: 3px;"></asp:TextBox>
+                    <asp:TextBox ID="TB_UserDefaultName" AutoComplete="off" runat="server" Style="border-width: 0px; outline:none; width:400px; margin: 0px; padding: 3px;"></asp:TextBox>
                 </div>
+                <asp:Label ID="L_UserDefaultNameError" Visible="false" runat="server" Text="" Style="display:block; margin-top:10px; color:#9F0000"></asp:Label>
                 
                 <table class="wide_table" style="margin-top: 30px;"><tr>
                     <td class="wide_table" style="width: 50%"></td>

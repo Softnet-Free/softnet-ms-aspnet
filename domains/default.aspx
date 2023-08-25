@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="domains_default" MasterPageFile="~/Site.master"  
-    MaintainScrollPositionOnPostback="true" EnableViewState="false" Title="My domains" %>
+    MaintainScrollPositionOnPostback="true" EnableViewState="false" Title="My Domains" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -33,6 +33,7 @@
     
     <div style="width: 794px; margin-top: 5px; border: 1px solid #A2C5D3;">
         <div style="height: 8px; background-color: #A2C5D3;"></div>
-        <asp:PlaceHolder ID="PH_DomainList" runat="server"/>                    
+        <asp:PlaceHolder ID="PH_DomainList" runat="server"/>   
     </div>    
+    <asp:Label ID="L_Error" Visible="false" runat="server" Text="" Style="display:block; margin-left:55px; margin-right:55px; margin-top:30px; color:#9F0000"></asp:Label>                 
 </asp:Content>

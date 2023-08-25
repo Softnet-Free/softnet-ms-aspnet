@@ -245,7 +245,7 @@ public partial class public_services_domain : System.Web.UI.Page
 
         try
         {
-            long clientId = SoftnetRegistry.CreateGuestClient2(m_dataset.creatorId, siteData.siteId, userData.userId);
+            long clientId = SoftnetRegistry.CreateGuestClient(m_dataset.creatorId, siteData.siteId, userData.userId);
             Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/public/services/domain.aspx?did={0}&cid={1}&cpr=1&sp={2}", m_dataset.domainId, clientId, siteData.siteId)));
         }
         catch (SoftnetException ex)

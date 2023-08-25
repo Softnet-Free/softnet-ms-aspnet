@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="contacts_default" MasterPageFile="~/Site.master" Title="My contacts" EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="default.aspx.cs" Inherits="contacts_default" MasterPageFile="~/Site.master" Title="My Contacts" EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -47,7 +47,7 @@
     <asp:Panel ID="P_ContactListHints" Visible="false" style="padding-left:10px; padding-top:10px;" runat="server"/>
 
     <asp:Panel ID="P_InvitationsViewer" Visible="false" runat="server">
-        <h2 style="margin: 20px 0px 5px 40px;">sent invitations</h2>
+        <h2 style="margin: 20px 0px 5px 40px;">invitations sent</h2>
         <div style="width: 794px; border: 1px solid #A2C5D3;"> 
             <div style="height: 8px; background-color: #A2C5D3;"></div>       
             <asp:PlaceHolder ID="PH_InvitationsViewer" runat="server"/>
@@ -55,7 +55,7 @@
     </asp:Panel>
 
     <asp:Panel ID="P_InvitationsEditor" Visible="false" runat="server">
-        <h2 style="margin: 30px 0px 5px 40px;">sent invitations</h2>
+        <h2 style="margin: 30px 0px 5px 40px;">invitations sent</h2>
         <div style="height: 8px; background-color: #A2C5D3;"></div>
         <asp:Table ID="Tb_InvitationsEditor" runat="server" CssClass="wide_table" style="border: 1px solid #A2C5D3;"></asp:Table> 
     </asp:Panel>

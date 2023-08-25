@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public class ContactDomainDataset
 {
-    public long ownerId;
+    public long consumerId;
     public long contactId;
     public long domainId;
     public string contactName = "";

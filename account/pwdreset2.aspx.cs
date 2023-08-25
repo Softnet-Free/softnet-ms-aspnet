@@ -15,9 +15,32 @@ public partial class account_pwdreset2 : System.Web.UI.Page
     { 
         try
         {
+            string password_text = TB_Password.Text.Trim();
+            if (password_text.Length != TB_Password.Text.Length)
+            {
+                L_ErrorMessage.Visible = true;
+                L_ErrorMessage.Text = "The password must not contain leading or trailing whitespace characters.";
+                return;
+            }
+
+            if (password_text.Length > Constants.MaxLength.owner_password)
+            {
+                L_ErrorMessage.Visible = true;
+                L_ErrorMessage.Text = string.Format("The password length must not be more than {0} characters.", Constants.MaxLength.owner_password);
+                return;
+            }
+
+            int passwordMinLength = SoftnetRegistry.settings_getUserPasswordMinLength();
+            if (password_text.Length < passwordMinLength)
+            {
+                L_ErrorMessage.Visible = true;
+                L_ErrorMessage.Text = string.Format("The password length must not be less than {0} characters", passwordMinLength);
+                return;
+            }
+
             TB_Password.Visible = false;
 
-            byte[] password = Encoding.Unicode.GetBytes(TB_Password.Text);
+            byte[] password = Encoding.Unicode.GetBytes(password_text);
             byte[] salt = Randomizer.generateOctetString(16);
             byte[] salt_and_password = new byte[password.Length + salt.Length];
             System.Buffer.BlockCopy(salt, 0, salt_and_password, 0, salt.Length);
@@ -43,15 +66,15 @@ public partial class account_pwdreset2 : System.Web.UI.Page
         try
         {
             m_receivedAccountName = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("name");
-            if (string.IsNullOrWhiteSpace(m_receivedAccountName))
+            if (string.IsNullOrWhiteSpace(m_receivedAccountName) || m_receivedAccountName.Length > 256)
                 throw new ArgumentSoftnetException("The recovery url has an invalid format.");
             
             string receivedTransactionKey = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("key");
-            if (string.IsNullOrWhiteSpace(receivedTransactionKey))
+            if (string.IsNullOrWhiteSpace(receivedTransactionKey) || receivedTransactionKey.Length > 64)
                 throw new ArgumentSoftnetException("The recovery url has an invalid format.");
 
             string base64ReceivedHash = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("hash");
-            if (string.IsNullOrWhiteSpace(base64ReceivedHash))
+            if (string.IsNullOrWhiteSpace(base64ReceivedHash) || base64ReceivedHash.Length > 64)
                 throw new ArgumentSoftnetException("The recovery url has an invalid format.");
 
             m_tranState = new AccountTransactionData2();

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="guest.aspx.cs" Inherits="public_clients_guest" Title="New Client - Guest Clients by Email"  MasterPageFile="~/Site.master" EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="guest.aspx.cs" Inherits="public_clients_guest" Title="New Guest Client by Email"  MasterPageFile="~/Site.master" EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

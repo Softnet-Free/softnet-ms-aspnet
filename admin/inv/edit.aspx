@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="edit.aspx.cs" Inherits="admin_inv_edit" Title="Edit Invitation <- Admin" MasterPageFile="~/Site.master"  EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="edit.aspx.cs" Inherits="admin_inv_edit" Title="Edit Invitation - Admin" MasterPageFile="~/Site.master"  EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

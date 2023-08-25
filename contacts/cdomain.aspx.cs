@@ -48,7 +48,7 @@ public partial class contacts_cdomain : System.Web.UI.Page
             m_editedClientId = 0;
             long.TryParse(HttpUtility.ParseQueryString(this.Request.Url.Query).Get("ecid"), out m_editedClientId);
 
-            this.Title = string.Format("{0} - {1}", m_dataset.domainName, m_dataset.contactName);
+            this.Title = string.Format("{0} - {1} - My Contacts", m_dataset.domainName, m_dataset.contactName);
 
             HL_Contact.Text = m_dataset.contactName;
             HL_Contact.NavigateUrl = string.Format("~/contacts/contact.aspx?cid={0}", m_dataset.contactId);
@@ -4642,7 +4642,7 @@ public partial class contacts_cdomain : System.Web.UI.Page
 
         try
         {
-            long clientId = SoftnetRegistry.CreateClient(siteData.siteId, userData.userId);
+            long clientId = SoftnetRegistry.CreateContactClient(m_dataset.consumerId, siteData.siteId, userData.userId);
             Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/contacts/cdomain.aspx?cid={0}&did={1}&ecid={2}&cpr=1&sp={3}", m_dataset.contactId, m_dataset.domainId, clientId, siteData.siteId)));
         }
         catch (SoftnetException ex)
@@ -4659,7 +4659,7 @@ public partial class contacts_cdomain : System.Web.UI.Page
 
         try
         {
-            long clientId = SoftnetRegistry.CreateGuestClient2(m_dataset.ownerId, siteData.siteId, userData.userId);
+            long clientId = SoftnetRegistry.CreateGuestClient(m_dataset.consumerId, siteData.siteId, userData.userId);
             Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/contacts/cdomain.aspx?cid={0}&did={1}&ecid={2}&cpr=1&sp={3}", m_dataset.contactId, m_dataset.domainId, clientId, siteData.siteId)));
         }
         catch (SoftnetException ex)

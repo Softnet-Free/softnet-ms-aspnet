@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="setemail.aspx.cs" Inherits="account_setemail" EnableViewState="false" Title="Set email <- My account settings" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="setemail.aspx.cs" Inherits="account_setemail" EnableViewState="false" Title="Set EMail - My Account Settings" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -19,7 +19,7 @@
             </tr></table>        
         </td>
         <td style="width: 400px; vertical-align: top;">
-            <h1 style="text-align: center;">set email</h1>
+            <h1 style="text-align: center;">setting email</h1>
         </td>
         <td style="width:199px;"></td>        
     </tr></table>        

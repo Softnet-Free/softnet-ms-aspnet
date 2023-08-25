@@ -73,7 +73,7 @@
         </asp:Table>
     </div>    
     <asp:Panel ID="P_UserListHints" Visible="false" style="padding-left:10px; padding-top:10px;" runat="server"/>
-    <asp:Label ID="L_UserListError" Visible="false" style="display:block; color:#FF3300; margin-left:10px; margin-top:20px;" runat="server"/>    
+    <asp:Label ID="L_UserListError" Visible="false" style="display:block; color:#FF3300; margin-left:55px; margin-top:20px;" runat="server"/>    
     <asp:Panel ID="P_ViewUserListButton" Visible="false" runat="server">
         <table class="wide_table" style="margin-top: 25px; margin-bottom: 10px"><tr>                                   
             <td style="width:15%"></td>

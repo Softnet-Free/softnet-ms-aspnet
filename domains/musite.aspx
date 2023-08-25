@@ -122,6 +122,7 @@
                                 </td>
                             </tr>
                         </table>
+                        <asp:Label ID="L_HostnameError" Visible="false" runat="server" Text="" Style="display:block; margin-top:10px; color:#9F0000"></asp:Label>
                     </asp:Panel>
                 </div>  
                 <asp:PlaceHolder ID="PH_Services" runat="server"/>
@@ -176,7 +177,7 @@
 
             <asp:Panel CssClass="site_block" Visible="false" ID="P_SharedClient" runat="server">
                 <div class="site_block_header">
-                    shared guest uri
+                    guest shared uri
                 </div>
                 <div class="site_block_item">
                     <asp:Label CssClass="guest_shared_uri" ID="L_SharedGuestURI" runat="server"/>                  

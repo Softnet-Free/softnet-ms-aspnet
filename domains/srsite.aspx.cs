@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.Text.RegularExpressions;
 
 public partial class srsite : System.Web.UI.Page
 {
@@ -26,7 +27,7 @@ public partial class srsite : System.Web.UI.Page
             m_siteDataset = new SiteConfigDataset();
             SoftnetRegistry.GetRSiteConfigDataset(this.Context.User.Identity.Name, siteId, m_siteDataset);
 
-            if (m_siteDataset.siteData.siteKind != 1 || m_siteDataset.services.Count != 1 || m_siteDataset.siteData.constructed == false || m_siteDataset.siteData.rolesSupported == false)
+            if (m_siteDataset.siteData.siteKind != 1 || m_siteDataset.services.Count != 1 || m_siteDataset.siteData.structured == false || m_siteDataset.siteData.rolesSupported == false)
             {
                 Response.Redirect(string.Format("~/domains/domain.aspx?did={0}", m_siteDataset.domainId));
                 return;
@@ -83,9 +84,19 @@ public partial class srsite : System.Web.UI.Page
         TButton button = (TButton)sender;
         TextBox textboxSiteDescription = (TextBox)button.Args[0];
 
+        string siteDescription = textboxSiteDescription.Text;
+        if (siteDescription.Length > Constants.MaxLength.site_description)
+        {
+            HtmlGenericControl span = new HtmlGenericControl("span");
+            P_SiteEdit.Controls.Add(span);
+            span.Attributes["style"] = "display: block; margin-top: 10px; color: #FF0000";
+            span.InnerText = string.Format("The site description must not contain more than {0} characters.", Constants.MaxLength.site_description);
+            return;
+        }
+
         try
         {
-            SoftnetRegistry.ChangeSiteDescription(m_siteData.siteId, textboxSiteDescription.Text);
+            SoftnetRegistry.ChangeSiteDescription(m_siteData.siteId, siteDescription);
             Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/domains/srsite.aspx?sid={0}", m_siteData.siteId)));
         }
         catch (SoftnetException ex)
@@ -206,10 +217,66 @@ public partial class srsite : System.Web.UI.Page
     {
         TButton button = (TButton)sender;
         TextBox textboxHostname = (TextBox)button.Args[0];
+        Panel panelWorkArea = P_ServiceEdit;
+
+        string hostName = textboxHostname.Text.Trim();
+        if (hostName.Length != textboxHostname.Text.Length)
+        {
+            HtmlGenericControl span = new HtmlGenericControl("span");
+            panelWorkArea.Controls.Add(span);
+            span.Attributes["style"] = "display: block; margin-top: 10px; color: #FF0000";
+            span.InnerText = "The hostname must not contain leading or trailing whitespace characters.";
+            return;
+        }
+
+        if (hostName.Length == 0)
+        {
+            HtmlGenericControl span = new HtmlGenericControl("span");
+            panelWorkArea.Controls.Add(span);
+            span.Attributes["style"] = "display: block; margin-top: 10px; color: #FF0000";
+            span.InnerText = "The hostname must not be empty.";
+            return;
+        }
+
+        if (hostName.Length > Constants.MaxLength.host_name)
+        {
+            HtmlGenericControl span = new HtmlGenericControl("span");
+            panelWorkArea.Controls.Add(span);
+            span.Attributes["style"] = "display: block; margin-top: 10px; color: #FF0000";
+            span.InnerText = string.Format("The hostname must not contain more than {0} characters.", Constants.MaxLength.host_name);
+            return;
+        }
+
+        if (Regex.IsMatch(hostName, @"[^\x20-\x7F]", RegexOptions.None))
+        {
+            HtmlGenericControl span = new HtmlGenericControl("span");
+            panelWorkArea.Controls.Add(span);
+            span.Attributes["style"] = "display: block; margin-top: 10px; color: #FF0000";
+            span.InnerText = "Valid symbols in the hostname are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
+            return;
+        }
+
+        if (Regex.IsMatch(hostName, @"[^\w\s.$*+#@%&=':\^()\[\]\-/!]", RegexOptions.None))
+        {
+            HtmlGenericControl span = new HtmlGenericControl("span");
+            panelWorkArea.Controls.Add(span);
+            span.Attributes["style"] = "display: block; margin-top: 10px; color: #FF0000";
+            span.InnerText = "Valid symbols in the hostname are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
+            return;
+        }
+
+        if (Regex.IsMatch(hostName, @"[\s]{2,}", RegexOptions.None))
+        {
+            HtmlGenericControl span = new HtmlGenericControl("span");
+            panelWorkArea.Controls.Add(span);
+            span.Attributes["style"] = "display: block; margin-top: 10px; color: #FF0000";
+            span.InnerText = "Two or more consecutive spaces are not allowed";
+            return;
+        }
 
         try 
         {
-            SoftnetTracker.changeHostname(m_siteData.siteId, m_serviceData.serviceId, textboxHostname.Text);
+            SoftnetTracker.changeHostname(m_siteData.siteId, m_serviceData.serviceId, hostName);
             Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/domains/srsite.aspx?sid={0}", m_siteData.siteId)));
         }
         catch (SoftnetException ex)
@@ -1131,13 +1198,13 @@ public partial class srsite : System.Web.UI.Page
 
                     Label labelContactName = new Label();
                     td3.Controls.Add(labelContactName);
-                    labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + allowedUser.userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                    labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(allowedUser.userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                     labelContactName.CssClass = "contact_in_status_0";
 
                     if (allowedUser.userData.contactData.status == 1)
                     {
                         labelContactName.CssClass = "contact_in_status_1";
-                        labelContactName.ToolTip = "Your partner has deleted the contact.";
+                        labelContactName.ToolTip = "Your partner deleted the contact.";
                     }
                     else if (allowedUser.userData.contactData.status == 2)
                     {
@@ -1226,13 +1293,13 @@ public partial class srsite : System.Web.UI.Page
 
                     Label labelContactName = new Label();
                     td3.Controls.Add(labelContactName);
-                    labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + allowedUser.userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                    labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(allowedUser.userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                     labelContactName.CssClass = "contact_in_status_0";
 
                     if (allowedUser.userData.contactData.status == 1)
                     {
                         labelContactName.CssClass = "contact_in_status_1";
-                        labelContactName.ToolTip = "Your partner has deleted the contact.";
+                        labelContactName.ToolTip = "Your partner deleted the contact.";
                     }
                     else if (allowedUser.userData.contactData.status == 2)
                     {
@@ -1721,12 +1788,12 @@ public partial class srsite : System.Web.UI.Page
                         Label labelContactName = new Label();
                         td3.Controls.Add(labelContactName);
                         labelContactName.CssClass = "contact_in_status_0";
-                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
 
                         if (userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
                     }
                     else
@@ -1776,12 +1843,12 @@ public partial class srsite : System.Web.UI.Page
                         Label labelContactName = new Label();
                         td3.Controls.Add(labelContactName);
                         labelContactName.CssClass = "contact_in_status_0";
-                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
 
                         if (userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
 
                         foreach (RoleData roleData in m_siteDataset.roles)
@@ -1853,7 +1920,7 @@ public partial class srsite : System.Web.UI.Page
 
                     Label labelContactName = new Label();
                     td3.Controls.Add(labelContactName);
-                    labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                    labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
 
                     if (userData.contactData.status == 2)
                     {

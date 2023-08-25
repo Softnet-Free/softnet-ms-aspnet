@@ -11,7 +11,7 @@ public class ContactData
     public long contactId = 0;
     public long consumerId = 0;
     public string contactName = "";
-    public string assigningName = "";
+    public string userDefaultName = "";
     public int status = 0;
 
     public static ContactData nullContact;

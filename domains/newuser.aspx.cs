@@ -128,7 +128,7 @@ public partial class newuser : System.Web.UI.Page
                     if (userData.contactData.status == 1)
                     {
                         labelContactName.CssClass = "contact_in_status_1";
-                        labelContactName.ToolTip = "Your partner has deleted the contact. However it will be usable again if your partner restore it).";
+                        labelContactName.ToolTip = "Your partner deleted the contact. However it can be usable again if your partner restore it.";
                     }
                     else if (userData.contactData.status == 2)
                     {
@@ -204,24 +204,24 @@ public partial class newuser : System.Web.UI.Page
             return;
         }
 
-        if (userName.Length > 256)
+        if (userName.Length > Constants.MaxLength.user_name)
         {
             L_PrivateUserError.Visible = true;
-            L_PrivateUserError.Text = "The username contains more than 256 characters.";
+            L_PrivateUserError.Text = string.Format("The username must not contain more than {0} characters.", Constants.MaxLength.user_name);
             return;
         }
 
         if (Regex.IsMatch(userName, @"[^\x20-\x7F]", RegexOptions.None))
         {
             L_PrivateUserError.Visible = true;
-            L_PrivateUserError.Text = "Allowed characters: a-z A-Z 0-9 space . $ * + # @ % & = ' : ^ ( ) [ ] - / !";
+            L_PrivateUserError.Text = "Valid symbols in the username are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
             return;
         }
 
         if (Regex.IsMatch(userName, @"^[a-zA-Z]", RegexOptions.None) == false)
         {
             L_PrivateUserError.Visible = true;
-            L_PrivateUserError.Text = "The leading character must be a letter: a-z A-Z";
+            L_PrivateUserError.Text = "The leading character must be a latin letter.";
             return;
         }
 
@@ -235,7 +235,7 @@ public partial class newuser : System.Web.UI.Page
         if (Regex.IsMatch(userName, @"[^\w\s.$*+#@%&=':\^()\[\]\-/!]", RegexOptions.None))
         {
             L_PrivateUserError.Visible = true;
-            L_PrivateUserError.Text = "Allowed characters: a-z A-Z 0-9 space . $ * + # @ % & = ' : ^ ( ) [ ] - / !";
+            L_PrivateUserError.Text = "Valid symbols in the user name are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
             return;
         }
 
@@ -278,9 +278,9 @@ public partial class newuser : System.Web.UI.Page
         {
             long contactId = long.Parse(ddList.SelectedValue);
             ContactData contactData = m_userDataset.contacts.Find(x => x.contactId == contactId);
-            if (contactData != null && string.IsNullOrEmpty(contactData.assigningName) == false)
+            if (contactData != null && string.IsNullOrEmpty(contactData.userDefaultName) == false)
             {
-                TB_ContactUserName.Text = contactData.assigningName;
+                TB_ContactUserName.Text = contactData.userDefaultName;
             }
             else
             {
@@ -312,17 +312,17 @@ public partial class newuser : System.Web.UI.Page
             return;
         }
 
-        if (userName.Length > 256)
+        if (userName.Length > Constants.MaxLength.user_name)
         {
             L_ContactUserError.Visible = true;
-            L_ContactUserError.Text = "The username contains more than 256 characters.";
+            L_ContactUserError.Text = string.Format("The username must not contain more than {0} characters.", Constants.MaxLength.user_name);
             return;
         }
         
-        if (Regex.IsMatch(userName, @"[^\x00-\x7F]", RegexOptions.None))
+        if (Regex.IsMatch(userName, @"[^\x20-\x7F]", RegexOptions.None))
         {
             L_ContactUserError.Visible = true;
-            L_ContactUserError.Text = "Allowed characters: a-z A-Z 0-9 space . $ * + # @ % & = ' : ^ ( ) [ ] - / !";
+            L_ContactUserError.Text = "Valid symbols in the user name are latin letters, numbers, spaces and the following characters: $ * + # @ % & = . ' : ^ ( ) [ ] - / !";
             return;
         }
 
@@ -343,7 +343,7 @@ public partial class newuser : System.Web.UI.Page
         if (Regex.IsMatch(userName, @"[^\w\s.$*+#@%&=':\^()\[\]\-/!]", RegexOptions.None))
         {
             L_ContactUserError.Visible = true;
-            L_ContactUserError.Text = "Allowed characters: a-z A-Z 0-9 space . $ * + # @ % & = ' : ^ ( ) [ ] - / !";
+            L_ContactUserError.Text = "Valid symbols in the user name are latin letters, numbers, spaces and the following characters: $ * + # @ % & = . ' : ^ ( ) [ ] - / !";
             return;
         }
 

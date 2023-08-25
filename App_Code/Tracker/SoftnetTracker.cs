@@ -221,7 +221,13 @@ public class SoftnetTracker
                 int errorCode = managementChannel.createPrivateUser(domainId, userName, dedicatedStatus);
                 channelFactory.Close();
                 if (errorCode != 0)
+                {
+                    if (errorCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of users in all of your domains has been reached.");
+                    if (errorCode == 6)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of users in the domain has been reached.");
                     throw new OperationFailedSoftnetException();
+                }
             }
             catch (TimeoutException ex)
             {
@@ -254,7 +260,13 @@ public class SoftnetTracker
                 int errorCode = managementChannel.createContactUser(domainId, contactId, userName, dedicatedStatus, enabledStatus);
                 channelFactory.Close();
                 if (errorCode != 0)
+                {
+                    if (errorCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of users in all of your domains has been reached.");
+                    if (errorCode == 6)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of users in the domain has been reached.");
                     throw new OperationFailedSoftnetException();
+                }
             }
             catch (TimeoutException ex)
             {
@@ -683,7 +695,13 @@ public class SoftnetTracker
                 int errorCode = managementChannel.addService(siteId, hostname);
                 channelFactory.Close();
                 if (errorCode != 0)
-                    throw new OperationFailedSoftnetException();
+                {
+                    if (errorCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of services in all of your domains has been reached.");
+                    if (errorCode == 6)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of services on the site has been reached.");
+                    throw new OperationFailedSoftnetException("Failed to create a service entity");
+                }
             }
             catch (TimeoutException ex)
             {

@@ -23,7 +23,7 @@
         </td>
         <td style="width: 400px;">
             <div style="padding-top: 5px; padding-bottom: 5px; ">
-                <h1 style="text-align: center;">client manager</h1>                
+                <h1 style="text-align: center;">client management</h1>                
             </div>
         </td>
         <td style="width:199px; vertical-align:top;">
@@ -108,7 +108,7 @@
 
             <asp:Panel CssClass="site_block" Visible="false" ID="P_SharedClient" runat="server">
                 <div class="site_block_header">
-                    shared guest uri
+                    guest shared uri
                 </div>
                 <div class="site_block_item">
                     <asp:Label CssClass="guest_shared_uri" ID="L_SharedGuestURI" runat="server"/>                     

@@ -219,9 +219,25 @@ public partial class domains_default : System.Web.UI.Page
         TButton tButton = (TButton)sender;
         DomainItem domainItem = (DomainItem)tButton.Args[0];
         TextBox textboxDomainName = (TextBox)tButton.Args[1];
+        
+        string domainName = textboxDomainName.Text.Trim();
+        if (string.IsNullOrEmpty(domainName))
+        {
+            L_Error.Visible = true;
+            L_Error.Text = "The domain name must not be empty.";
+            return;
+        }
+
+        if (domainName.Length > Constants.MaxLength.domain_name)
+        {
+            L_Error.Visible = true;
+            L_Error.Text = string.Format("The length of a domain name must not be more than {0} characters.", Constants.MaxLength.domain_name);
+            return;
+        }
+
         try
         {
-            SoftnetRegistry.ChangeDomainName(domainItem.domainId, textboxDomainName.Text.Trim());
+            SoftnetRegistry.ChangeDomainName(domainItem.domainId, domainName);
             Response.Redirect("~/domains/default.aspx?edit=1");
         }
         catch (SoftnetException ex)

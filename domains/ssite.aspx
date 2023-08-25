@@ -52,7 +52,7 @@
                     <asp:Label CssClass="site_type" ID="L_SiteType" EnableViewState="false" runat="server"/>
                 </td>                 
                 <td class="wide_table" style="text-align:right; padding-left: 4px; padding-right: 4px; white-space: nowrap">
-                    <asp:Label CssClass="object_status" ID="L_SiteStatus" Text="site not constructed" runat="server"></asp:Label>
+                    <asp:Label CssClass="object_status" ID="L_SiteStatus" Text="site blank" runat="server"></asp:Label>
                 </td>
                 <td class="wide_table" style="width:23px; padding: 1px;">
                     <div class="SubmitButtonSquareMini RedOrange">

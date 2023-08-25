@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="unlock.aspx.cs" Inherits="account_unlock" EnableViewState="false" Title="Account unlocking" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="unlock.aspx.cs" Inherits="account_unlock" EnableViewState="false" Title="Account Unlocking" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

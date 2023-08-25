@@ -110,7 +110,7 @@ public partial class contacts_default : System.Web.UI.Page
                         Label labelDescrition = new Label();
                         P_ContactListHints.Controls.Add(labelDescrition);
                         labelDescrition.Text = "<span class='gray_text'>(</span><span class='contact_in_status_1'>*</span><span class='gray_text'>)</span>" +
-                            " - Your partner has deleted the contact. However it will be usable again if your partner restore it.";
+                            " - Your partner deleted the contact. However it can be usable again if your partner restore it.";
                         labelDescrition.Attributes["style"] = "display:block; padding-top: 5px;";
                     }
 
@@ -272,10 +272,10 @@ public partial class contacts_default : System.Web.UI.Page
                         td.CssClass = "wide_table";
                         td.Attributes["style"] = "border-top: 1px solid #A2C5D3; border-bottom: 1px solid #A2C5D3; padding: 5px;";
                         
-                        Label labelAssigningName = new Label();
-                        td.Controls.Add(labelAssigningName);
-                        labelAssigningName.Text = contactData.assigningName;
-                        labelAssigningName.CssClass = "name";
+                        Label labelUserDefaultname = new Label();
+                        td.Controls.Add(labelUserDefaultname);
+                        labelUserDefaultname.Text = contactData.userDefaultName;
+                        labelUserDefaultname.CssClass = "name";
 
                         td = new TableCell();
                         tableRow.Cells.Add(td);
@@ -312,7 +312,7 @@ public partial class contacts_default : System.Web.UI.Page
                         Label labelDescrition = new Label();
                         P_ContactListHints.Controls.Add(labelDescrition);
                         labelDescrition.Text = "<span class='gray_text'>(</span><span class='contact_in_status_1'>*</span><span class='gray_text'>)</span>" +
-                            " - Your partner has deleted the contact.";
+                            " - Your partner deleted the contact.";
                         labelDescrition.Attributes["style"] = "display:block; padding-top: 5px;";
                     }
 

@@ -13,7 +13,7 @@ public partial class account_pwdreset : System.Web.UI.Page
     protected void SendMail_Click(object sender, EventArgs e)
     {
         string targetName = TB_TargetName.Text.Trim();
-        if (string.IsNullOrWhiteSpace(targetName))
+        if (string.IsNullOrWhiteSpace(targetName) || targetName.Length > 256)
             return;
 
         try

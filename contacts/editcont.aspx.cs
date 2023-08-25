@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text.RegularExpressions;
 
 public partial class contacts_editcont : System.Web.UI.Page
 {
@@ -33,7 +34,7 @@ public partial class contacts_editcont : System.Web.UI.Page
             if (this.IsPostBack == false)
             {
                 TB_ContactName.Text = m_contactData.contactName;
-                TB_AssigningName.Text = m_contactData.assigningName;
+                TB_UserDefaultName.Text = m_contactData.userDefaultName;
             }
         }
         catch (SoftnetException ex)
@@ -57,7 +58,61 @@ public partial class contacts_editcont : System.Web.UI.Page
 
         try
         {
-            SoftnetRegistry.UpdateContact(m_contactData.contactId, TB_ContactName.Text, TB_AssigningName.Text);
+            string contactName = TB_ContactName.Text.Trim();
+            if (contactName.Length > Constants.MaxLength.contact_name)
+            {
+                L_ContactNameError.Visible = true;
+                L_ContactNameError.Text = string.Format("The contact name must not contain more than {0} characters.", Constants.MaxLength.contact_name);
+                return;
+            }
+
+            string userDefaultName = TB_UserDefaultName.Text;
+            if (userDefaultName.Length > 0)
+            {
+                if (userDefaultName.Length > Constants.MaxLength.user_name)
+                {
+                    L_UserDefaultNameError.Visible = true;
+                    L_UserDefaultNameError.Text = string.Format("The user name must not contain more than {0} characters.", Constants.MaxLength.user_name);
+                    return;
+                }
+
+                if (Regex.IsMatch(userDefaultName, @"[^\x20-\x7F]", RegexOptions.None))
+                {
+                    L_UserDefaultNameError.Visible = true;
+                    L_UserDefaultNameError.Text = "Valid symbols in the user name are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
+                    return;
+                }
+
+                if (Regex.IsMatch(userDefaultName, @"^[a-zA-Z]", RegexOptions.None) == false)
+                {
+                    L_UserDefaultNameError.Visible = true;
+                    L_UserDefaultNameError.Text = "The leading character must be a latin letter.";
+                    return;
+                }
+
+                if (Regex.IsMatch(userDefaultName, @"[\s]$", RegexOptions.None))
+                {
+                    L_UserDefaultNameError.Visible = true;
+                    L_UserDefaultNameError.Text = "The trailing space is illegal.";
+                    return;
+                }
+
+                if (Regex.IsMatch(userDefaultName, @"[^\w\s.$*+#@%&=':\^()\[\]\-/!]", RegexOptions.None))
+                {
+                    L_UserDefaultNameError.Visible = true;
+                    L_UserDefaultNameError.Text = "Valid symbols in the user name are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
+                    return;
+                }
+
+                if (Regex.IsMatch(userDefaultName, @"[\s]{2,}", RegexOptions.None))
+                {
+                    L_UserDefaultNameError.Visible = true;
+                    L_UserDefaultNameError.Text = "Two or more consecutive spaces are not allowed.";
+                    return;
+                }
+            }
+
+            SoftnetRegistry.UpdateContact(m_contactData.contactId, contactName, userDefaultName);
             Response.Redirect("~/contacts/default.aspx?edit=1");
         }
         catch (SoftnetException ex)

@@ -38,6 +38,7 @@
                         </div>
                     </td>
                 </tr></table>
+                <asp:Label ID="L_Error" Visible="false" runat="server" Text="" Style="display:block; margin-top:10px; color:#9F0000"></asp:Label>
             </div>  
         </td>
         <td class="wide_table" style="width: 50%"></td>

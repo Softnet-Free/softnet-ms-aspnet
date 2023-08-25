@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="recv_invs.aspx.cs" Inherits="contacts_recv_invs" MasterPageFile="~/Site.master" Title="Received invitations" EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="invsrecv.aspx.cs" Inherits="contacts_invs_recv" MasterPageFile="~/Site.master" Title="Invitations Received" EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <h1 style="text-align: center;">received invitations</h1>
+    <h1 style="text-align: center;">invitations received</h1>
 
     <table class="wide_table"><tr>
         <td class="wide_table" style="width: 50%"></td>

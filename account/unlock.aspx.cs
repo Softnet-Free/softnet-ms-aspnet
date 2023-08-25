@@ -13,7 +13,7 @@ public partial class account_unlock : System.Web.UI.Page
     protected void SendMail_Click(object sender, EventArgs e)
     {
         string accountName = TB_TargetName.Text.Trim();
-        if (string.IsNullOrWhiteSpace(accountName))
+        if (string.IsNullOrWhiteSpace(accountName) || accountName.Length > 256)
             return;
 
         try

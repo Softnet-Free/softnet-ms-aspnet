@@ -60,7 +60,7 @@ public partial class contacts_mdomain : System.Web.UI.Page
             if (m_dataset.contactStatus == 1)
             {
                 HL_Contact.CssClass = "h3_name contact_in_status_1";
-                HL_Contact.ToolTip = "Your partner has deleted the contact.";
+                HL_Contact.ToolTip = "Your partner deleted the contact.";
             }
             else if (m_dataset.contactStatus == 2)
             {

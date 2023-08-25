@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="search.aspx.cs" Inherits="admin_mgt_search" Title="Search <- User management <- Admin" MasterPageFile="~/Site.master"  MaintainScrollPositionOnPostback="true" EnableViewState="false"  %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="search.aspx.cs" Inherits="admin_mgt_search" Title="Search - User Management - Admin" MasterPageFile="~/Site.master"  MaintainScrollPositionOnPostback="true" EnableViewState="false"  %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -11,8 +11,8 @@
     <td class="wide_table">
         <div style="width: 700px;">
             <h1 style="text-align:center">search for user</h1>
-            <h3 style="padding-left: 30px; color: #4F8DA6;">filter</h3>
-            <div style="background-color: #A2C5D3">                    
+            
+            <div style="margin-top: 15px; background-color: #A2C5D3">                    
                 <table class="wide_table"><tr>
                     <td class="wide_table" style="width: 470px; padding: 3px 5px 3px 5px;">
                         <asp:TextBox ID="TB_SearchFilter" AutoComplete="off" runat="server" Style="font-size:1.1em; border-width: 0px; outline:none; width:464px; margin: 0px; padding: 3px;"></asp:TextBox>

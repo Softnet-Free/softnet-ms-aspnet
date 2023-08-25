@@ -732,7 +732,7 @@ public class SoftnetRegistry
                     if (resultCode == -5)
                         throw new DataIntegritySoftnetException();
                     if (resultCode == 1)
-                        throw new InvalidStateSoftnetException("The site is not constructed.");
+                        throw new InvalidStateSoftnetException("The site is empty.");
                     throw new DataDefinitionSoftnetException();
                 }
 
@@ -1240,7 +1240,7 @@ public class SoftnetRegistry
                 if (resultCode != 0)
                 {
                     if (resultCode == 1)
-                        throw new ArgumentSoftnetException("The guest access is denied.");
+                        throw new ArgumentSoftnetException("Guest access is denied.");
                     if (resultCode == 2)
                         throw new ArgumentSoftnetException("The confirmation url has already been applied.");
                     if (resultCode == -1)
@@ -1369,7 +1369,7 @@ public class SoftnetRegistry
                     if (resultCode == 3)
                         throw new InvalidStateSoftnetException("The site is disabled.");
                     if (resultCode == 4)
-                        throw new InvalidStateSoftnetException("The site is not constructed.");
+                        throw new InvalidStateSoftnetException("The site is empty.");
                     if (resultCode == 5)
                         throw new InvalidStateSoftnetException("The guest access is denied.");
                     if (resultCode == 6)
@@ -4036,7 +4036,7 @@ public class SoftnetRegistry
                             if (dataReader[10] != DBNull.Value)
                                 sData.defaultRoleId = (long)dataReader[10];
                             sData.implicitUsersAllowed = (bool)dataReader[11];
-                            sData.constructed = (bool)dataReader[12];
+                            sData.structured = (bool)dataReader[12];
                             sData.enabled = (bool)dataReader[13];
                             if (dataReader[14] != DBNull.Value)
                                 sData.description = (string)dataReader[14];
@@ -4232,8 +4232,8 @@ public class SoftnetRegistry
                 command.Parameters["@DomainId"].Direction = ParameterDirection.Input;
                 command.Parameters["@DomainId"].Value = dataset.domainId;
 
-                command.Parameters.Add("@OwnerId", SqlDbType.BigInt);
-                command.Parameters["@OwnerId"].Direction = ParameterDirection.Output;
+                command.Parameters.Add("@ConsumerId", SqlDbType.BigInt);
+                command.Parameters["@ConsumerId"].Direction = ParameterDirection.Output;
 
                 command.Parameters.Add("@ContactName", SqlDbType.NVarChar, 256);
                 command.Parameters["@ContactName"].Direction = ParameterDirection.Output;
@@ -4270,7 +4270,7 @@ public class SoftnetRegistry
                             if (dataReader[10] != DBNull.Value)
                                 siteData.defaultRoleId = (long)dataReader[10];
                             siteData.implicitUsersAllowed = (bool)dataReader[11];
-                            siteData.constructed = (bool)dataReader[12];
+                            siteData.structured = (bool)dataReader[12];
                             siteData.enabled = (bool)dataReader[13];
                             if (dataReader[14] != DBNull.Value)
                                 siteData.description = (string)dataReader[14];
@@ -4423,8 +4423,8 @@ public class SoftnetRegistry
                         throw new AccountNotFoundSoftnetException(accountName);
                     throw new DataDefinitionSoftnetException();
                 }
-                
-                dataset.ownerId = (long)command.Parameters["@OwnerId"].Value;
+
+                dataset.consumerId = (long)command.Parameters["@ConsumerId"].Value;
                 dataset.contactName = (string)command.Parameters["@ContactName"].Value;
                 dataset.domainName = (string)command.Parameters["@DomainName"].Value;
             }
@@ -4581,8 +4581,8 @@ public class SoftnetRegistry
                 command.Parameters.Add("@ContactName", SqlDbType.NVarChar, 256);
                 command.Parameters["@ContactName"].Direction = ParameterDirection.Output;
 
-                command.Parameters.Add("@AssigningName", SqlDbType.NVarChar, 256);
-                command.Parameters["@AssigningName"].Direction = ParameterDirection.Output;
+                command.Parameters.Add("@UserDefaultName", SqlDbType.NVarChar, 256);
+                command.Parameters["@UserDefaultName"].Direction = ParameterDirection.Output;
 
                 command.Parameters.Add("@Status", SqlDbType.Int);
                 command.Parameters["@Status"].Direction = ParameterDirection.Output;
@@ -4608,7 +4608,7 @@ public class SoftnetRegistry
 
                 contactData.contactId = contactId;
                 contactData.contactName = (string)command.Parameters["@ContactName"].Value;
-                contactData.assigningName = (string)command.Parameters["@AssigningName"].Value;
+                contactData.userDefaultName = (string)command.Parameters["@UserDefaultName"].Value;
                 contactData.status = (int)command.Parameters["@Status"].Value;
                 if (contactData.status != 2)
                     partnerName.Value = (string)command.Parameters["@PartnerName"].Value;
@@ -4624,7 +4624,7 @@ public class SoftnetRegistry
         }
     }
 
-    public static void UpdateContact(long contactId, string contactName, string assigningName)
+    public static void UpdateContact(long contactId, string contactName, string userDefaultName)
     {
         try
         {
@@ -4646,9 +4646,9 @@ public class SoftnetRegistry
                 command.Parameters["@ContactName"].Direction = ParameterDirection.Input;
                 command.Parameters["@ContactName"].Value = contactName;
 
-                command.Parameters.Add("@AssigningName", SqlDbType.NVarChar, 256);
-                command.Parameters["@AssigningName"].Direction = ParameterDirection.Input;
-                command.Parameters["@AssigningName"].Value = assigningName;
+                command.Parameters.Add("@UserDefaultName", SqlDbType.NVarChar, 256);
+                command.Parameters["@UserDefaultName"].Direction = ParameterDirection.Input;
+                command.Parameters["@UserDefaultName"].Value = userDefaultName;
 
                 command.ExecuteNonQuery();
             }
@@ -5281,7 +5281,7 @@ public class SoftnetRegistry
                                 contactData.consumerId = (long)dataReader[1];
                             contactData.contactName = (string)dataReader[2];
                             if (dataReader[3] != DBNull.Value)
-                                contactData.assigningName = (string)dataReader[3];
+                                contactData.userDefaultName = (string)dataReader[3];
                             contactData.status = (int)dataReader[4];
                             contacts.Add(contactData);
                         }
@@ -5491,8 +5491,12 @@ public class SoftnetRegistry
                 command.ExecuteNonQuery();
                 
                 int errorCode = (int)command.Parameters["@ReturnValue"].Value;
-                if (errorCode == -2)
-                    throw new AccountNotFoundSoftnetException(accountName);
+                if (errorCode != 0)
+                {
+                    if (errorCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of domains has been reached.");
+                    throw new OperationFailedSoftnetException();
+                }
 
                 return (long)command.Parameters["@DomainId"].Value;
             }
@@ -5699,7 +5703,7 @@ public class SoftnetRegistry
                             if (dataReader[10] != DBNull.Value)
                                 sData.defaultRoleId = (long)dataReader[10];
                             sData.implicitUsersAllowed = (bool)dataReader[11];
-                            sData.constructed = (bool)dataReader[12];
+                            sData.structured = (bool)dataReader[12];
                             sData.enabled = (bool)dataReader[13];
                             if (dataReader[14] != DBNull.Value)
                                 sData.description = (string)dataReader[14];
@@ -5758,7 +5762,7 @@ public class SoftnetRegistry
                             ContactData cData = new ContactData();
                             cData.contactId = (long)dataReader[0];
                             cData.contactName = (string)dataReader[1];
-                            cData.status = (int)dataReader[3];
+                            cData.status = (int)dataReader[2];
                             contacts.Add(cData);
                         }
 
@@ -5980,7 +5984,7 @@ public class SoftnetRegistry
                             cd.contactId = (long)dataReader[0];
                             cd.contactName = (string)dataReader[1];
                             if (dataReader[2] != DBNull.Value)
-                                cd.assigningName = (string)dataReader[2];
+                                cd.userDefaultName = (string)dataReader[2];
                             cd.status = (int)dataReader[3];
                             contacts.Add(cd);
                         }
@@ -6111,7 +6115,19 @@ public class SoftnetRegistry
                 command.Parameters.Add("@SiteId", SqlDbType.BigInt);
                 command.Parameters["@SiteId"].Direction = ParameterDirection.Output;
 
+                command.Parameters.Add("@ReturnValue", SqlDbType.Int);
+                command.Parameters["@ReturnValue"].Direction = ParameterDirection.ReturnValue;                
+
                 command.ExecuteNonQuery();
+
+                int returnCode = (int)command.Parameters["@ReturnValue"].Value;
+                if (returnCode != 0)
+                {
+                    if (returnCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of sites has been reached.");
+                    throw new OperationFailedSoftnetException("Failed to create a site");
+                }
+
                 return (long)command.Parameters["@SiteId"].Value;
             }
         }
@@ -6181,7 +6197,7 @@ public class SoftnetRegistry
                             if (dataReader[10] != DBNull.Value)
                                 sData.defaultRoleId = (long)dataReader[10];
                             sData.implicitUsersAllowed = (bool)dataReader[11];
-                            sData.constructed = (bool)dataReader[12];
+                            sData.structured = (bool)dataReader[12];
                             sData.enabled = (bool)dataReader[13];
                             if (dataReader[14] != DBNull.Value)
                                 sData.description = (string)dataReader[14];
@@ -6356,7 +6372,7 @@ public class SoftnetRegistry
                             if (dataReader[10] != DBNull.Value)
                                 sData.defaultRoleId = (long)dataReader[10];
                             sData.implicitUsersAllowed = (bool)dataReader[11];
-                            sData.constructed = (bool)dataReader[12];
+                            sData.structured = (bool)dataReader[12];
                             sData.enabled = (bool)dataReader[13];
                             if (dataReader[14] != DBNull.Value)
                                 sData.description = (string)dataReader[14];
@@ -6520,7 +6536,7 @@ public class SoftnetRegistry
                             if (dataReader[10] != DBNull.Value)
                                 siteData.defaultRoleId = (long)dataReader[10];
                             siteData.implicitUsersAllowed = (bool)dataReader[11];
-                            siteData.constructed = (bool)dataReader[12];
+                            siteData.structured = (bool)dataReader[12];
                             siteData.enabled = (bool)dataReader[13];
                             if (dataReader[14] != DBNull.Value)
                                 siteData.description = (string)dataReader[14];                            
@@ -6745,7 +6761,7 @@ public class SoftnetRegistry
                             if (dataReader[10] != DBNull.Value)
                                 siteData.defaultRoleId = (long)dataReader[10];
                             siteData.implicitUsersAllowed = (bool)dataReader[11];
-                            siteData.constructed = (bool)dataReader[12];
+                            siteData.structured = (bool)dataReader[12];
                             siteData.enabled = (bool)dataReader[13];
                             if (dataReader[14] != DBNull.Value)
                                 siteData.description = (string)dataReader[14];
@@ -6945,7 +6961,7 @@ public class SoftnetRegistry
                             if (dataReader[9] != DBNull.Value)
                                 siteData.defaultRoleId = (long)dataReader[9];
                             siteData.implicitUsersAllowed = (bool)dataReader[10];
-                            siteData.constructed = (bool)dataReader[11];
+                            siteData.structured = (bool)dataReader[11];
                             siteData.enabled = (bool)dataReader[12];
                             if (dataReader[13] != DBNull.Value)
                                 siteData.description = (string)dataReader[13];
@@ -7044,7 +7060,7 @@ public class SoftnetRegistry
         }
     }
 
-    public static long CreateClient(long siteId, long userId)
+    public static long CreateClient(long ownerId, long siteId, long userId)
     {
         int clientKeyLength = SoftnetRegistry.settings_getClientKeyLength(); 
         try
@@ -7082,6 +7098,10 @@ public class SoftnetRegistry
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "Softnet_Mgt_CreateClient";
 
+                command.Parameters.Add("@OwnerId", SqlDbType.BigInt);
+                command.Parameters["@OwnerId"].Direction = ParameterDirection.Input;
+                command.Parameters["@OwnerId"].Value = ownerId;                
+
                 command.Parameters.Add("@SiteId", SqlDbType.BigInt);
                 command.Parameters["@SiteId"].Direction = ParameterDirection.Input;
                 command.Parameters["@SiteId"].Value = siteId;
@@ -7097,7 +7117,21 @@ public class SoftnetRegistry
                 command.Parameters.Add("@ClientId", SqlDbType.BigInt);
                 command.Parameters["@ClientId"].Direction = ParameterDirection.Output;
 
+                command.Parameters.Add("@ReturnValue", SqlDbType.Int);
+                command.Parameters["@ReturnValue"].Direction = ParameterDirection.ReturnValue;
+
                 command.ExecuteNonQuery();
+                    
+                int resultCode = (int)command.Parameters["@ReturnValue"].Value;
+                if (resultCode != 0)
+                {
+                    if (resultCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of private clients in all of your domains has been reached.");
+                    if (resultCode == 6)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of clients created by you has been reached.");
+                    throw new OperationFailedSoftnetException("Failed to create a client.");                    
+                }
+                
                 return (long)command.Parameters["@ClientId"].Value;
             }
         }
@@ -7111,7 +7145,7 @@ public class SoftnetRegistry
         }
     }
 
-    public static long CreateGuestClient2(long creatorId, long siteId, long userId)
+    public static long CreateContactClient(long consumerId, long siteId, long userId)
     {
         int clientKeyLength = SoftnetRegistry.settings_getClientKeyLength();
         try
@@ -7147,11 +7181,11 @@ public class SoftnetRegistry
                 command = new SqlCommand();
                 command.Connection = Connection;
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "Softnet_Mgt_CreateGuestClient2";
+                command.CommandText = "Softnet_Mgt_CreateContactClient";
 
-                command.Parameters.Add("@CreatorId", SqlDbType.BigInt);
-                command.Parameters["@CreatorId"].Direction = ParameterDirection.Input;
-                command.Parameters["@CreatorId"].Value = creatorId;
+                command.Parameters.Add("@ConsumerId", SqlDbType.BigInt);
+                command.Parameters["@ConsumerId"].Direction = ParameterDirection.Input;
+                command.Parameters["@ConsumerId"].Value = consumerId;
 
                 command.Parameters.Add("@SiteId", SqlDbType.BigInt);
                 command.Parameters["@SiteId"].Direction = ParameterDirection.Input;
@@ -7168,7 +7202,21 @@ public class SoftnetRegistry
                 command.Parameters.Add("@ClientId", SqlDbType.BigInt);
                 command.Parameters["@ClientId"].Direction = ParameterDirection.Output;
 
+                command.Parameters.Add("@ReturnValue", SqlDbType.Int);
+                command.Parameters["@ReturnValue"].Direction = ParameterDirection.ReturnValue;
+
                 command.ExecuteNonQuery();
+
+                int resultCode = (int)command.Parameters["@ReturnValue"].Value;
+                if (resultCode != 0)
+                {
+                    if (resultCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of contact clients for the provider has been reached.");
+                    if (resultCode == 6)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of clients created by you has been reached.");
+                    throw new OperationFailedSoftnetException("Failed to create a client.");
+                }
+
                 return (long)command.Parameters["@ClientId"].Value;
             }
         }
@@ -7182,9 +7230,9 @@ public class SoftnetRegistry
         }
     }
 
-    public static string CreateGuestClient(long creatorId, long siteId, long userId, string salt, string saltedPassword)
+    public static long CreateGuestClient(long creatorId, long siteId, long userId)
     {
-        int clientKeyLength = SoftnetRegistry.settings_getClientKeyLength(); 
+        int clientKeyLength = SoftnetRegistry.settings_getClientKeyLength();
         try
         {
             string connectionString = ConfigurationManager.ConnectionStrings["Softnet"].ConnectionString;
@@ -7236,16 +7284,25 @@ public class SoftnetRegistry
                 command.Parameters["@ClientKey"].Direction = ParameterDirection.Input;
                 command.Parameters["@ClientKey"].Value = clientKey;
 
-                command.Parameters.Add("@Salt", SqlDbType.VarChar, 64);
-                command.Parameters["@Salt"].Direction = ParameterDirection.Input;
-                command.Parameters["@Salt"].Value = salt;
+                command.Parameters.Add("@ClientId", SqlDbType.BigInt);
+                command.Parameters["@ClientId"].Direction = ParameterDirection.Output;
 
-                command.Parameters.Add("@SaltedPassword", SqlDbType.VarChar, 64);
-                command.Parameters["@SaltedPassword"].Direction = ParameterDirection.Input;
-                command.Parameters["@SaltedPassword"].Value = saltedPassword;
+                command.Parameters.Add("@ReturnValue", SqlDbType.Int);
+                command.Parameters["@ReturnValue"].Direction = ParameterDirection.ReturnValue;
 
                 command.ExecuteNonQuery();
-                return clientKey;
+
+                int resultCode = (int)command.Parameters["@ReturnValue"].Value;
+                if (resultCode != 0)
+                {
+                    if (resultCode == 5)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of guest clients for the provider has been reached.");
+                    if (resultCode == 6)
+                        throw new LimitReachedSoftnetException("The limit for the maximum number of clients created by you has been reached.");
+                    throw new OperationFailedSoftnetException("Failed to create a client.");
+                }
+
+                return (long)command.Parameters["@ClientId"].Value;
             }
         }
         catch (SqlException ex)
@@ -7256,5 +7313,5 @@ public class SoftnetRegistry
         {
             throw new ConfigSoftnetException(ex.Message);
         }
-    }
+    }   
 }

@@ -35,7 +35,7 @@ public partial class contacts_contact : System.Web.UI.Page
             else
                 L_ContactName.CssClass += " provider_color";
 
-            this.Title = m_dataset.contactName;
+            this.Title = string.Format("{0} - My Contacts", m_dataset.contactName);
 
             if (meProvider)
             {
@@ -91,7 +91,7 @@ public partial class contacts_contact : System.Web.UI.Page
                     PH_Warning.Controls.Add(spanWarning);
                     spanWarning.Attributes["class"] = "warning";
                     spanWarning.Attributes["style"] = "display:block; margin-top:20px; margin-left:10px; margin-right:10px";
-                    spanWarning.InnerHtml = "<span class='contact_in_status_1'>Warning!</span> Your partner has deleted the contact. However it will be usable again if your partner restore it.";
+                    spanWarning.InnerHtml = "<span class='contact_in_status_1'>Warning!</span> Your partner deleted the contact. However it can be usable again if your partner restore it.";
                 }
                 else // m_dataset.status == 2
                 {

@@ -52,7 +52,7 @@
                     <asp:Label CssClass="site_type" ID="L_SiteType" EnableViewState="false" runat="server"/>
                 </td>                 
                 <td class="wide_table" style="text-align:right; padding-left: 4px; padding-right: 4px; white-space: nowrap">
-                    <asp:Label CssClass="object_status" ID="L_SiteStatus" Text="site not constructed" runat="server"></asp:Label>
+                    <asp:Label CssClass="object_status" ID="L_SiteStatus" Text="site blank" runat="server"></asp:Label>
                 </td>
                 <td class="wide_table" style="width:23px; padding: 1px;">
                     <div class="SubmitButtonSquareMini RedOrange">
@@ -112,6 +112,7 @@
                                 </td>
                             </tr>
                         </table>
+                        <asp:Label ID="L_HostnameError" Visible="false" runat="server" Text="" Style="display:block; margin-top:10px; color:#9F0000"></asp:Label>
                     </asp:Panel>
                 </div>  
                 <asp:PlaceHolder ID="PH_Services" runat="server"/>  

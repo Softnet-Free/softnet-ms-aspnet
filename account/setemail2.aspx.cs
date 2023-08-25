@@ -36,19 +36,19 @@ public partial class account_setemail2 : System.Web.UI.Page
         try
         {
             string receivedAccountName = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("name");
-            if (string.IsNullOrWhiteSpace(receivedAccountName))
+            if (string.IsNullOrWhiteSpace(receivedAccountName) || m_receivedEMail.Length > 256)
                 throw new ArgumentSoftnetException("The confirmation url has an invalid format.");
 
             m_receivedEMail = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("email");
-            if (string.IsNullOrWhiteSpace(m_receivedEMail))
+            if (string.IsNullOrWhiteSpace(m_receivedEMail) || m_receivedEMail.Length > 256)
                 throw new ArgumentSoftnetException("The confirmation url has an invalid format.");
 
             string receivedTransactionKey = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("key");
-            if (string.IsNullOrWhiteSpace(receivedTransactionKey))
+            if (string.IsNullOrWhiteSpace(receivedTransactionKey) || receivedTransactionKey.Length > 64)
                 throw new ArgumentSoftnetException("The confirmation url has an invalid format.");
 
             string base64ReceivedHash = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("hash");
-            if (string.IsNullOrWhiteSpace(base64ReceivedHash))
+            if (string.IsNullOrWhiteSpace(base64ReceivedHash) || base64ReceivedHash.Length > 64)
                 throw new ArgumentSoftnetException("The confirmation url has an invalid format.");
 
             m_tranData = new AccountTransactionData2();

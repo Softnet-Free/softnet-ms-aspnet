@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="settings.aspx.cs" Inherits="admin_settings" Title="Settings <- Admin"  MasterPageFile="~/Site.master"  EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="settings.aspx.cs" Inherits="admin_settings" Title="Settings - Admin"  MasterPageFile="~/Site.master"  EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

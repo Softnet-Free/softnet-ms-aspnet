@@ -729,7 +729,7 @@ public partial class public_clients_domain : System.Web.UI.Page
                             span = new HtmlGenericControl("span");
                             tdRight.Controls.Add(span);
                             span.Attributes["style"] = "font-size: 1.1em; color: #3C6C80;";
-                            span.InnerHtml = "In order to create a new client you need first to confirm the email <span style='color: #CF5400'>" + m_receivedEMail + "</span>. " +
+                            span.InnerHtml = "In order to create a new client, you need first to confirm the email <span style='color: #CF5400'>" + m_receivedEMail + "</span>. " +
                                 "Click the button <span style='font-weight:bold;'>send confirmation mail</span> then follow the url from the inbox of the email.";
 
                             table = new HtmlGenericControl("table");
@@ -1018,7 +1018,7 @@ public partial class public_clients_domain : System.Web.UI.Page
                 tdMiddle.Controls.Add(span);
                 span.Attributes["style"] = "display:block; margin-top: 10px; font-size: 1.1em; color: #3C6C80;";
                 span.InnerHtml =
-                    "In order to get an access to the client's account click the button <span style='font-weight:bold;white-space:nowrap;'>send confirmation mail</span> "+
+                    "In order to get an access to the client's account, click the button <span style='font-weight:bold;white-space:nowrap;'>send confirmation mail</span> "+
                     "then follow the url from the inbox of the email <span style='color: #CF5400'>" + m_receivedEMail + "</span>.";                    
 
                 table = new HtmlGenericControl("table");
@@ -1432,7 +1432,7 @@ public partial class public_clients_domain : System.Web.UI.Page
                             span = new HtmlGenericControl("span");
                             tdRight.Controls.Add(span);
                             span.Attributes["style"] = "font-size: 1.1em; color: #3C6C80;";
-                            span.InnerHtml = "In order to create a new client you need first to confirm the email <span style='color: #CF5400'>" + m_receivedEMail + "</span>. " +
+                            span.InnerHtml = "In order to create a new client, you need first to confirm the email <span style='color: #CF5400'>" + m_receivedEMail + "</span>. " +
                                 "Click the button <span style='font-weight:bold;'>send confirmation mail</span> then follow the url from the inbox of the email.";
 
                             table = new HtmlGenericControl("table");
@@ -1721,9 +1721,8 @@ public partial class public_clients_domain : System.Web.UI.Page
                 tdMiddle.Controls.Add(span);
                 span.Attributes["style"] = "display:block; margin-top: 10px; font-size: 1.1em; color: #3C6C80;";
                 span.InnerHtml =
-                    "In order to get an access to the client's account click the button <span style='font-weight:bold;white-space:nowrap;'>send confirmation mail</span> " +
+                    "In order to get an access to the client's account, click the button <span style='font-weight:bold;white-space:nowrap;'>send confirmation mail</span> " +
                     "then follow the url from the inbox of the email <span style='color: #CF5400'>" + m_receivedEMail + "</span>.";                    
-
 
                 table = new HtmlGenericControl("table");
                 tdMiddle.Controls.Add(table);

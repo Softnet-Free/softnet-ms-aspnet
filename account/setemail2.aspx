@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="setemail2.aspx.cs" Inherits="account_setemail2" EnableViewState="false" Title="Set account email" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="setemail2.aspx.cs" Inherits="account_setemail2" EnableViewState="false" Title="Set Account EMail" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

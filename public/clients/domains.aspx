@@ -14,7 +14,7 @@
                 <div style="width: 500px;">
                     <span style="font-size: 1.2em; color: #3C6C80">
                         In order to browse your guest clients you need a browsing url. 
-                        If you haven't got it yet type your email address in the text box and click <span style="font-weight:bold;">send confirmation mail</span>,
+                        If you haven't got it yet, type your email address in the text box and click <span style="font-weight:bold;">send confirmation mail</span>,
                         then follow the url from the inbox of your email.
                     </span>
 

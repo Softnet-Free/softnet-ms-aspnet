@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.Text.RegularExpressions;
 
 public partial class domain : System.Web.UI.Page
 {
@@ -59,7 +60,7 @@ public partial class domain : System.Web.UI.Page
                     P_Sites.Visible = true;
                     foreach (SiteData siteData in m_dataset.sites)
                     {
-                        if (siteData.constructed)
+                        if (siteData.structured)
                         {
                             if (siteData.rolesSupported)
                             {
@@ -670,13 +671,13 @@ public partial class domain : System.Web.UI.Page
 
                         Label labelContactName = new Label();
                         divSiteBlockItem.Controls.Add(labelContactName);
-                        labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + allowedUser.userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(allowedUser.userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                         labelContactName.CssClass = "contact_in_status_0";
 
                         if (allowedUser.userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
                         else if (allowedUser.userData.contactData.status == 2)
                         {
@@ -1255,13 +1256,13 @@ public partial class domain : System.Web.UI.Page
 
                         Label labelContactName = new Label();
                         divSiteBlockItem.Controls.Add(labelContactName);
-                        labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + allowedUser.userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = " &nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(allowedUser.userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                         labelContactName.CssClass = "contact_in_status_0";
 
                         if (allowedUser.userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
                         else if (allowedUser.userData.contactData.status == 2)
                         {
@@ -1763,13 +1764,13 @@ public partial class domain : System.Web.UI.Page
 
                         Label labelContactName = new Label();
                         divSiteBlockItem.Controls.Add(labelContactName);
-                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                         labelContactName.CssClass = "contact_in_status_0";
 
                         if (userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
                         else if (userData.contactData.status == 2)
                         {
@@ -1866,13 +1867,13 @@ public partial class domain : System.Web.UI.Page
 
                         Label labelContactName = new Label();
                         divSiteBlockItem.Controls.Add(labelContactName);
-                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                         labelContactName.CssClass = "contact_in_status_0";
 
                         if (userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
                         else if (userData.contactData.status == 2)
                         {
@@ -2341,13 +2342,13 @@ public partial class domain : System.Web.UI.Page
 
                         Label labelContactName = new Label();
                         divSiteBlockItem.Controls.Add(labelContactName);
-                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                         labelContactName.CssClass = "contact_in_status_0";
 
                         if (userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
                         else if (userData.contactData.status == 2)
                         {
@@ -2444,13 +2445,13 @@ public partial class domain : System.Web.UI.Page
 
                         Label labelContactName = new Label();
                         divSiteBlockItem.Controls.Add(labelContactName);
-                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + userData.contactData.contactName + "<span class='gray_text'>&#62;</span>";
+                        labelContactName.Text = "&nbsp;&nbsp;<span class='gray_text'>&#60;</span>" + ContactDisplayName.Adjust(userData.contactData.contactName) + "<span class='gray_text'>&#62;</span>";
                         labelContactName.CssClass = "contact_in_status_0";
 
                         if (userData.contactData.status == 1)
                         {
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }
                         else if (userData.contactData.status == 2)
                         {
@@ -2558,7 +2559,7 @@ public partial class domain : System.Web.UI.Page
         HtmlGenericControl spanSiteStatus = new HtmlGenericControl("span");
         td.Controls.Add(spanSiteStatus);
         spanSiteStatus.Attributes["class"] = "object_status";
-        spanSiteStatus.InnerText = "site not constructed";
+        spanSiteStatus.InnerText = "site blank";
 
         td = new HtmlGenericControl("td");
         tr.Controls.Add(td);
@@ -2744,7 +2745,7 @@ public partial class domain : System.Web.UI.Page
         HtmlGenericControl spanSiteStatus = new HtmlGenericControl("span");
         td.Controls.Add(spanSiteStatus);
         spanSiteStatus.Attributes["class"] = "object_status";
-        spanSiteStatus.InnerText = "site not constructed";
+        spanSiteStatus.InnerText = "site blank";
 
         td = new HtmlGenericControl("td");
         tr.Controls.Add(td);
@@ -2960,34 +2961,68 @@ public partial class domain : System.Web.UI.Page
         {
             TextBox textboxName = (TextBox)button.Args[1];
             CheckBox checkboxDisabled = (CheckBox)button.Args[2];
-            CheckBox checkboxDedicated = (CheckBox)button.Args[3];            
+            CheckBox checkboxDedicated = (CheckBox)button.Args[3];
 
-            if (string.IsNullOrWhiteSpace(textboxName.Text))
+            string userName = textboxName.Text;
+            if (string.IsNullOrWhiteSpace(userName))
             {
                 L_UserListError.Visible = true;
-                L_UserListError.Text = "Error! The user name must not be empty.";                
+                L_UserListError.Text = "An empty username is not allowed.";
                 return;
             }
 
-            if (textboxName.Text.Length > 256)
+            if (userName.Length > Constants.MaxLength.user_name)
             {
                 L_UserListError.Visible = true;
-                L_UserListError.Text = "Error! The user name is too long. The maximum length is 256 symbols.";  
+                L_UserListError.Text = string.Format("The username must not contain more than {0} characters.", Constants.MaxLength.user_name);
                 return;
             }
 
-            string newName = textboxName.Text.ToLower();
-            UserData existingUser = m_dataset.users.Find(x => x.userId != userData.userId && x.name.ToLower().Equals(newName));
-            if (existingUser != null)
+            if (Regex.IsMatch(userName, @"[^\x20-\x7F]", RegexOptions.None))
             {
                 L_UserListError.Visible = true;
-                L_UserListError.Text = string.Format("Error! The user '{0}' has already exist in the domain.", textboxName.Text); 
+                L_UserListError.Text = "Valid symbols in the username are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
+                return;
+            }
+
+            if (Regex.IsMatch(userName, @"^[a-zA-Z]", RegexOptions.None) == false)
+            {
+                L_UserListError.Visible = true;
+                L_UserListError.Text = "The leading character must be a latin letter.";
+                return;
+            }
+
+            if (Regex.IsMatch(userName, @"[\s]$", RegexOptions.None))
+            {
+                L_UserListError.Visible = true;
+                L_UserListError.Text = "The trailing space is illegal.";
+                return;
+            }
+
+            if (Regex.IsMatch(userName, @"[^\w\s.$*+#@%&=':\^()\[\]\-/!]", RegexOptions.None))
+            {
+                L_UserListError.Visible = true;
+                L_UserListError.Text = "Valid symbols in the username are latin letters, numbers, spaces and the following characters: $ . * + # @ % & = ' : ^ ( ) [ ] - / !";
+                return;
+            }
+
+            if (Regex.IsMatch(userName, @"[\s]{2,}", RegexOptions.None))
+            {
+                L_UserListError.Visible = true;
+                L_UserListError.Text = "Two or more consecutive spaces are not allowed.";
+                return;
+            }
+
+            if (m_dataset.users.Find(x => x.userId != userData.userId && x.name.Equals(userName, StringComparison.OrdinalIgnoreCase)) != null)
+            {
+                L_UserListError.Visible = true;
+                L_UserListError.Text = string.Format("The user '{0}' has already exist in the domain.", textboxName.Text); 
                 return;
             }
 
             try
             {
-                SoftnetTracker.updateUser(m_dataset.domainId, userData.userId, textboxName.Text, checkboxDisabled.Checked == false, checkboxDedicated.Checked);
+                SoftnetTracker.updateUser(m_dataset.domainId, userData.userId, userName, checkboxDisabled.Checked == false, checkboxDedicated.Checked);
                 Response.Redirect(m_urlBuider.getLoopUrl(string.Format("~/domains/domain.aspx?did={0}", m_dataset.domainId)));
             }
             catch (SoftnetException ex)
@@ -3288,7 +3323,7 @@ public partial class domain : System.Web.UI.Page
                         {
                             labelContactName.Text += " <span class='gray_text'>(</span>*<span class='gray_text'>)</span>";
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }                        
 
                         td = new TableCell();
@@ -3382,7 +3417,7 @@ public partial class domain : System.Web.UI.Page
                         {
                             labelContactName.Text += " <span class='gray_text'>(</span>*<span class='gray_text'>)</span>";
                             labelContactName.CssClass = "contact_in_status_1";
-                            labelContactName.ToolTip = "Your partner has deleted the contact.";
+                            labelContactName.ToolTip = "Your partner deleted the contact.";
                         }                        
 
                         td = new TableCell();
@@ -3930,7 +3965,7 @@ public partial class domain : System.Web.UI.Page
             Label labelDescrition = new Label();
             P_UserListHints.Controls.Add(labelDescrition);
             labelDescrition.Text = "<span class='gray_text'>(</span><span class='contact_in_status_1'>*</span><span class='gray_text'>)</span>" +
-                " - Your partner has deleted the contact. However it will be usable again if your partner restore it.";
+                " - Your partner deleted the contact. However it can be usable again if your partner restore it.";
             labelDescrition.Attributes["style"] = "display:block; padding-top: 5px;";
         }
 

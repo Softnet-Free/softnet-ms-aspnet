@@ -25,7 +25,7 @@
         <td class="wide_table" style="width: 50%"></td>
         <td class="wide_table">
             <div style="padding:5px 0px 4px 5px;">
-                <h2>private user</h2>
+                <h2 style="color: #508397">private user</h2>
             </div>
             <div style="width: 560px; padding: 5px; background-color: #A2C5D3">
                 <table style="border-collapse: collapse; border-width: 0px; margin: 0px; padding: 0px"><tr>
@@ -53,7 +53,7 @@
             </div>
     
             <div style="padding:15px 0px 4px 5px">
-                <h2>contact user</h2>
+                <h2 style="color: #508397">contact user</h2>
             </div>
             <div style="width: 560px; padding: 5px; background-color: #A2C5D3">
                 <span style="display: block; color: white; padding-left: 6px; padding-bottom: 2px">contact</span>
@@ -85,7 +85,7 @@
                 <asp:Label ID="L_ContactUserError" Visible="false" runat="server" Text="" Style="display:block; margin-top:10px; color:#9F0000"></asp:Label>
             </div>
             <div style="padding:15px 0px 4px 5px">
-                <h2>existing users</h2>
+                <h2 style="color: #508397">existing users</h2>
             </div>
             <div style="width: 570px; border: 1px solid #A2C5D3;">
                 <asp:Table ID="T_ExistingUsers" runat="server" Style="width: 100%; border-collapse:collapse; border-width: 0px">

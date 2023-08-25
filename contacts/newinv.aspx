@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newinv.aspx.cs" Inherits="contacts_newinv" MasterPageFile="~/Site.master" Title="New invitation"  MaintainScrollPositionOnPostback="true" EnableViewState="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="newinv.aspx.cs" Inherits="contacts_newinv" MasterPageFile="~/Site.master" Title="New Invitation"  MaintainScrollPositionOnPostback="true" EnableViewState="false" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -24,8 +24,8 @@
     <td class="wide_table" style="width: 50%"></td>
     <td class="wide_table">
         <div style="width: 700px; padding-top: 4px">
-            <div style="padding-left: 10px; padding-bottom:4px;">
-                <h4 style="color: #4F8DA6; padding-left:50px">search for user</h4>
+            <div style="padding-left: 10px; padding-top: 16px; padding-bottom:4px;">
+                <h4 style="color: #4F8DA6; padding-left:5px">search for a person or organization</h4>
             </div>
             <div style="background-color: #A2C5D3">                    
                 <table class="wide_table"><tr>

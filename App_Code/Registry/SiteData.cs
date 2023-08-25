@@ -21,7 +21,7 @@ public class SiteData
     public bool rolesSupported = false;
     public long defaultRoleId = 0;
     public bool implicitUsersAllowed = true;
-    public bool constructed = false;
+    public bool structured = false;
     public bool enabled = true;
     public string description = "";
 }

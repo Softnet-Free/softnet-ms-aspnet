@@ -114,10 +114,28 @@ public partial class account_settings : System.Web.UI.Page
             Response.Redirect("~/account/settings.aspx?prm=name");
         else
         {
+            if (TD_OwnerName.Controls.Count == 0)
+                return;
             try
             {
                 TextBox textBox = (TextBox)TD_OwnerName.Controls[0];
-                SoftnetRegistry.account_setOwnerName(m_accountData.ownerId, textBox.Text.Trim());
+
+                string userFullName = textBox.Text.Trim();
+                if (userFullName.Length > Constants.MaxLength.owner_name)
+                {
+                    L_ErrorMessage.Visible = true;
+                    L_ErrorMessage.Text = string.Format("The length of your name must not be more than {0} characters.", Constants.MaxLength.owner_name);
+                    return;
+                }
+
+                if (userFullName.Length < Constants.MinLength.owner_name)
+                {
+                    L_ErrorMessage.Visible = true;
+                    L_ErrorMessage.Text = string.Format("The length of your name must not be less than {0} characters.", Constants.MinLength.owner_name);
+                    return;
+                }
+
+                SoftnetRegistry.account_setOwnerName(m_accountData.ownerId, userFullName);
                 Response.Redirect("~/account/settings.aspx");
             }
             catch (SoftnetException ex)
@@ -132,29 +150,38 @@ public partial class account_settings : System.Web.UI.Page
         Button button = (Button)sender;
         if (button.Text.Equals("edit"))
             Response.Redirect("~/account/settings.aspx?prm=pw");
-
         else
         {
+            if (TD_Password.Controls.Count == 0)
+                return;
             try
             {
                 TextBox textBox = (TextBox)TD_Password.Controls[0];
+                string password_text = textBox.Text.Trim();
 
-                if (textBox.Text.Length != textBox.Text.Trim().Length)
+                if (password_text.Length != textBox.Text.Length)
                 {
                     L_ErrorMessage.Visible = true;
                     L_ErrorMessage.Text = "The password must not contain leading or trailing whitespace characters.";
                     return;
                 }
 
-                int passwordMinLength = SoftnetRegistry.settings_getUserPasswordMinLength();
-                if (textBox.Text.Length < passwordMinLength)
+                if (password_text.Length > Constants.MaxLength.owner_password)
                 {
                     L_ErrorMessage.Visible = true;
-                    L_ErrorMessage.Text = string.Format("The password length must be in the range [{0}, 64].", passwordMinLength);
+                    L_ErrorMessage.Text = string.Format("The password length must not be more than {0} characters.", Constants.MaxLength.owner_password);
                     return;
                 }
 
-                byte[] password = System.Text.Encoding.Unicode.GetBytes(textBox.Text);
+                int passwordMinLength = SoftnetRegistry.settings_getUserPasswordMinLength();
+                if (password_text.Length < passwordMinLength)
+                {
+                    L_ErrorMessage.Visible = true;
+                    L_ErrorMessage.Text = string.Format("The password length must not be less than {0} characters", passwordMinLength);
+                    return;
+                }
+
+                byte[] password = System.Text.Encoding.Unicode.GetBytes(password_text);
                 byte[] salt = Randomizer.generateOctetString(16);
                 byte[] salt_and_password = new byte[password.Length + salt.Length];
                 System.Buffer.BlockCopy(salt, 0, salt_and_password, 0, salt.Length);

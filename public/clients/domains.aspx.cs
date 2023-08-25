@@ -97,6 +97,7 @@ public partial class public_clients_domains : System.Web.UI.Page
                         hyperLink.Attributes["style"] = "font-size:1.2em;";
                         hyperLink.Text = owner.fullName;
                         hyperLink.NavigateUrl = string.Format("~/public/services/domains.aspx?uid={0}", owner.ownerId);
+                        hyperLink.Target = "_blank";
 
                         HtmlGenericControl table = new HtmlGenericControl("table");
                         divOwnerDomains.Controls.Add(table);

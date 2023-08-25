@@ -14,6 +14,26 @@ public class Constants
         public const int transaction_key_length = 20;
     }
 
+    public class MaxLength
+    {
+        public const int owner_name = 64;
+        public const int account_name = 64;
+        public const int contact_name = owner_name;
+        public const int contact_display_name = 24;
+        public const int domain_name = 96;
+        public const int site_description = 96;
+        public const int user_name = 36;
+        public const int host_name = 42;
+        public const int owner_password = 64;
+    }
+
+    public class MinLength
+    {
+        public const int owner_name = 4;
+        public const int account_name = 4;
+        public const int contact_name = owner_name;
+    }
+
     public static class RegistryError
     {
         public const int object_not_found = -1;

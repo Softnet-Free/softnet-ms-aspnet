@@ -100,7 +100,7 @@ public partial class admin_mgt_user : System.Web.UI.Page
             string retString = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("ret");
             m_urlBuider = new UrlBuider(retString);
 
-            Title = string.Format("{0} <- User management <- Admin", m_memberData.fullName);
+            Title = string.Format("{0} - User Management - Admin", m_memberData.fullName);
 
             L_UserName.Text = m_memberData.fullName;
             L_AccountName.Text = m_memberData.accountName;
@@ -117,7 +117,7 @@ public partial class admin_mgt_user : System.Web.UI.Page
                 TButton buttonRemoveRole = new TButton();
                 divRemoveRoleButton.Controls.Add(buttonRemoveRole);
                 buttonRemoveRole.Args.Add(m_memberData);
-                buttonRemoveRole.Text = "remove Provider role";
+                buttonRemoveRole.Text = "remove the role Provider";
                 buttonRemoveRole.ID = "RemoveRole";
                 buttonRemoveRole.Click += new EventHandler(RemoveRoleProvider_Click);
             }
@@ -132,7 +132,7 @@ public partial class admin_mgt_user : System.Web.UI.Page
                 TButton buttonAssignRole = new TButton();
                 divAssignRoleButton.Controls.Add(buttonAssignRole);
                 buttonAssignRole.Args.Add(m_memberData);
-                buttonAssignRole.Text = "assign Provider role";
+                buttonAssignRole.Text = "assign the role Provider";
                 buttonAssignRole.ID = "AssignRole";
                 buttonAssignRole.Click += new EventHandler(AssignRoleProvider_Click);
             }
@@ -145,31 +145,37 @@ public partial class admin_mgt_user : System.Web.UI.Page
             {
                 L_Status.Text = "User &nbsp;<span style='color: #009F00; font-weight: bold'>enabled</span>";
 
-                HtmlGenericControl divDisableButton = new HtmlGenericControl("div");
-                PH_StatusButton.Controls.Add(divDisableButton);
-                divDisableButton.Attributes["class"] = "SubmitButtonMini RedOrange";
+                if (m_memberData.authority <= 1)
+                {
+                    HtmlGenericControl divDisableButton = new HtmlGenericControl("div");
+                    PH_StatusButton.Controls.Add(divDisableButton);
+                    divDisableButton.Attributes["class"] = "SubmitButtonMini RedOrange";
 
-                TButton buttonDisable = new TButton();
-                divDisableButton.Controls.Add(buttonDisable);
-                buttonDisable.Args.Add(m_memberData);
-                buttonDisable.Text = "disable user";
-                buttonDisable.ID = "Disable";
-                buttonDisable.Click += new EventHandler(DisableUser_Click);
+                    TButton buttonDisable = new TButton();
+                    divDisableButton.Controls.Add(buttonDisable);
+                    buttonDisable.Args.Add(m_memberData);
+                    buttonDisable.Text = "disable user";
+                    buttonDisable.ID = "Disable";
+                    buttonDisable.Click += new EventHandler(DisableUser_Click);
+                }
             }
             else
             {
                 L_Status.Text = "User &nbsp;<span style='color: #9F0000; font-weight: bold'>disabled</span>";
 
-                HtmlGenericControl divEnableButton = new HtmlGenericControl("div");
-                PH_StatusButton.Controls.Add(divEnableButton);
-                divEnableButton.Attributes["class"] = "SubmitButtonMini Green";
+                if (m_memberData.authority <= 1)
+                {
+                    HtmlGenericControl divEnableButton = new HtmlGenericControl("div");
+                    PH_StatusButton.Controls.Add(divEnableButton);
+                    divEnableButton.Attributes["class"] = "SubmitButtonMini Green";
 
-                TButton buttonEnable = new TButton();
-                divEnableButton.Controls.Add(buttonEnable);
-                buttonEnable.Args.Add(m_memberData);
-                buttonEnable.Text = "enable user";
-                buttonEnable.ID = "Enable";
-                buttonEnable.Click += new EventHandler(EnableUser_Click);            
+                    TButton buttonEnable = new TButton();
+                    divEnableButton.Controls.Add(buttonEnable);
+                    buttonEnable.Args.Add(m_memberData);
+                    buttonEnable.Text = "enable user";
+                    buttonEnable.ID = "Enable";
+                    buttonEnable.Click += new EventHandler(EnableUser_Click);
+                }
             }
         }
         catch (SoftnetException ex)

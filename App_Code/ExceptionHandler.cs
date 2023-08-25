@@ -10,8 +10,6 @@ public class ExceptionHandler
 {
     public static void exec(System.Web.UI.Page page, SoftnetException ex)
     {
-        //page.Response.Write(ex.Message);
-        //return;
         if(ex.Kind == 1)
             page.Response.Redirect(string.Format("~/error.aspx?msg={0}", UrlMessageCodec.encode(ex.Message)));
         else

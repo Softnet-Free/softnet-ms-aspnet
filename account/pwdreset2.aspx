@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="pwdreset2.aspx.cs" Inherits="account_pwdreset2" EnableViewState="false" Title="Password reset" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="pwdreset2.aspx.cs" Inherits="account_pwdreset2" EnableViewState="false" Title="Password Reset" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -24,6 +24,10 @@
                     </td>
                     <td class="wide_table" style="width: 50%"></td>
                 </tr></table>
+
+                <div style="padding-top: 40px; text-align: left; padding-left: 100px; padding-right: 100px;">
+                    <asp:Label ID="L_ErrorMessage" Visible="false" CssClass="failureNotification" runat="server"/>
+                </div>
             </div>
         </td>
         <td class="wide_table" style="width: 50%"></td>

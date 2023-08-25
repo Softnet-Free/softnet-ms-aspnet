@@ -1,4 +1,20 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+﻿<%--
+*   Copyright 2023 Robert Koifman
+*
+*   Licensed under the Apache License, Version 2.0 (the "License");
+*   you may not use this file except in compliance with the License.
+*   You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+*   Unless required by applicable law or agreed to in writing, software
+*   distributed under the License is distributed on an "AS IS" BASIS,
+*   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*   See the License for the specific language governing permissions and
+*   limitations under the License.
+--%>
+
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -16,12 +32,15 @@
     <div class="page">
         <div class="header">
             <table class="wide_table"><tr>
-            <td class="wide_table" style="text-align: left">
-                <div class="title">
-                    <h1>SOFTNET MS</h1>
-                </div>
+            <td class="wide_table" style="text-align: left;">
+                <table class="wide_table"><tr>
+                    <td class="wide_table" style="width: 60px; background-image: url('/images/logo.png'); background-repeat:no-repeat;"></td>
+                    <td class="wide_table">
+                        <h1>SOFTNET MS</h1>
+                    </td>
+                </tr></table>
             </td>            
-            <td class="wide_table" style="text-align: right">
+            <td class="wide_table" style="text-align: right;">
                 <table class="auto_table" style="display:inline;"><tr>
                 <td class="auto_table">
                     <div class="loginDisplay">
@@ -68,7 +87,7 @@
                         <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal"/>                            
                     </td>
                     <td class="wide_table" style="padding-right: 5px">
-                        <asp:HyperLink Visible="false" ID="HL_InvitationsReceived" Style="text-decoration: none;" NavigateUrl="~/contacts/recv_invs.aspx" runat="server">
+                        <asp:HyperLink Visible="false" ID="HL_InvitationsReceived" Style="text-decoration: none;" NavigateUrl="~/contacts/invsrecv.aspx" runat="server">
                             <div style="border-radius: 20px; background-color: white; padding: 4px 12px;">                        
                                 <asp:Label Style="color: #FF7400; white-space: nowrap; text-decoration: none;" ID="L_InvitationsReceived" runat="server" EnableViewState="false"/>
                             </div>

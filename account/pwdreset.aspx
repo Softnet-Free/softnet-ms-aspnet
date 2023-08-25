@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="pwdreset.aspx.cs" Inherits="account_pwdreset" EnableViewState="false" Title="Password reset" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="pwdreset.aspx.cs" Inherits="account_pwdreset" EnableViewState="false" Title="Password Reset" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

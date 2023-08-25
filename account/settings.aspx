@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="settings.aspx.cs" Inherits="account_settings" Title="My account settings" MasterPageFile="~/Site.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="settings.aspx.cs" Inherits="account_settings" Title="My Account Settings" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -11,7 +11,7 @@
             <div style="width: 530px;">
                 <asp:Table ID="Tb_settings" CssClass="wide_table" runat="server">            
                     <asp:TableRow runat="server">
-                        <asp:TableCell CssClass="wide_table" Style="color: #3C6C80; padding: 5px;" runat="server">Name</asp:TableCell>
+                        <asp:TableCell CssClass="wide_table" Style="color: #3C6C80; padding: 5px;" runat="server">Full Name</asp:TableCell>
                         <asp:TableCell CssClass="wide_table" Style="width: 360px; border: 1px solid gray;" ID="TD_OwnerName" runat="server"/>
                         <asp:TableCell CssClass="wide_table" Style="padding-left: 20px; width: 60px" runat="server">
                             <asp:Panel ID="P_OwnerNameButton" runat="server" class="SubmitButtonMini Blue">

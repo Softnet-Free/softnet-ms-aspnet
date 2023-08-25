@@ -188,7 +188,7 @@
 
             <asp:Panel CssClass="site_block" Visible="false" ID="P_SharedClient" runat="server">
                 <div class="site_block_header">
-                    shared guest uri
+                    guest shared uri
                 </div>
                 <div class="site_block_item">
                     <asp:Label CssClass="guest_shared_uri" ID="L_SharedGuestURI" runat="server"/>                                             

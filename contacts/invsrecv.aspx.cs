@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
-public partial class contacts_recv_invs : System.Web.UI.Page
+public partial class contacts_invs_recv : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -88,7 +88,7 @@ public partial class contacts_recv_invs : System.Web.UI.Page
         try
         {
             SoftnetRegistry.AcceptInvitation(this.Context.User.Identity.Name, invitingUser.ownerId);
-            Response.Redirect("~/contacts/recv_invs.aspx");
+            Response.Redirect("~/contacts/invsrecv.aspx");
         }
         catch (SoftnetException ex)
         {
@@ -103,7 +103,7 @@ public partial class contacts_recv_invs : System.Web.UI.Page
         try
         {
             SoftnetRegistry.DeleteReceivedInvitation(this.Context.User.Identity.Name, invitingUser.ownerId);
-            Response.Redirect("~/contacts/recv_invs.aspx");
+            Response.Redirect("~/contacts/invsrecv.aspx");
         }
         catch (SoftnetException ex)
         {

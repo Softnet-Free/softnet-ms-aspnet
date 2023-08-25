@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="new.aspx.cs" Inherits="admin_inv_new" Title="New Invitation <- Admin" MasterPageFile="~/Site.master"  MaintainScrollPositionOnPostback="true" EnableViewState="false"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="new.aspx.cs" Inherits="admin_inv_new" Title="New Invitation - Admin" MasterPageFile="~/Site.master"  MaintainScrollPositionOnPostback="true" EnableViewState="false"%>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

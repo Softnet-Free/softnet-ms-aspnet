@@ -13,15 +13,15 @@ public partial class account_unlock2 : System.Web.UI.Page
         try
         {
             string receivedAccountName = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("name");
-            if (string.IsNullOrWhiteSpace(receivedAccountName))
+            if (string.IsNullOrWhiteSpace(receivedAccountName) || receivedAccountName.Length > 256)
                 throw new ArgumentSoftnetException("The recovery url has an invalid format.");
 
             string receivedTransactionKey = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("key");
-            if (string.IsNullOrWhiteSpace(receivedTransactionKey))
+            if (string.IsNullOrWhiteSpace(receivedTransactionKey) || receivedTransactionKey.Length > 64)
                 throw new ArgumentSoftnetException("The recovery url has an invalid format.");
 
             string base64ReceivedHash = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("hash");
-            if (string.IsNullOrWhiteSpace(base64ReceivedHash))
+            if (string.IsNullOrWhiteSpace(base64ReceivedHash) || base64ReceivedHash.Length > 64)
                 throw new ArgumentSoftnetException("The recovery url has an invalid format.");
 
             AccountTransactionData2 tranState = new AccountTransactionData2();

@@ -21,7 +21,7 @@ public partial class account_setemail : System.Web.UI.Page
         try
         {
             string email = TB_EMail.Text.Trim();
-            if (string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(email) || email.Length > 256)
                 return;
 
             if (EMailValidator.IsValid(email) == false)

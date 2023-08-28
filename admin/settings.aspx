@@ -28,7 +28,7 @@
                 <asp:TableHeaderCell CssClass="param_table btn" style="width:65px;" runat="server"/>
             </asp:TableHeaderRow>
             <asp:TableRow runat="server">
-                <asp:TableCell CssClass="param_table lnd" runat="server">Softnet site url (<span style='color:#BB6600'>scheme://address</span>)</asp:TableCell>
+                <asp:TableCell CssClass="param_table lnd" runat="server">Softnet MS URL (<span style='color:#BB6600'>scheme://address</span>)</asp:TableCell>
                 <asp:TableCell CssClass="param_table val" ID="TD_SiteUrl" runat="server"/>                    
                 <asp:TableCell CssClass="param_table btn" runat="server">
                     <asp:Panel ID="P_SiteUrlButton" runat="server" class="SubmitButtonMini Blue">

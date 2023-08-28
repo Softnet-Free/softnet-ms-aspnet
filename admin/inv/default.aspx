@@ -91,7 +91,7 @@
             <td class="wide_table" style="width:100%;"></td>
             <td class="wide_table" style="padding-right: 40px">                
                 <div class="SubmitButtonMini RedOrange">
-                    <asp:Button ID="B_ClearEIL" runat="server" Text="clear list" onclick="ClearExpiredInvitationList_Click" />
+                    <asp:Button ID="B_ClearEIL" runat="server" Text="delete expired invitations" onclick="ClearExpiredInvitationList_Click" />
                 </div>
             </td>
         </tr></table>    

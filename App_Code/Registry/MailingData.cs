@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public class MailingData
 {
-    public string siteUrl;
+    public string msUrl;
     public string siteAddress;
     public string secretKey;
     public long currentTime;

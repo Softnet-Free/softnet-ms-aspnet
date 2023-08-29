@@ -528,7 +528,7 @@ public partial class domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getSiteUrl(), siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getManagementSystemUrl(), siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {
@@ -1109,7 +1109,7 @@ public partial class domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getSiteUrl(), siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getManagementSystemUrl(), siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {
@@ -1663,7 +1663,7 @@ public partial class domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getSiteUrl(), siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getManagementSystemUrl(), siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {
@@ -2241,7 +2241,7 @@ public partial class domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getSiteUrl(), siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getManagementSystemUrl(), siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {

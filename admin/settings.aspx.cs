@@ -37,32 +37,32 @@ public partial class admin_settings : System.Web.UI.Page
 
             if (string.Equals(parameter, "su", StringComparison.InvariantCultureIgnoreCase))
             {
-                TD_SiteUrl.CssClass = "param_table val edit";
+                TD_MSUrl.CssClass = "param_table val edit";
 
                 TextBox textBox = new TextBox();
-                TD_SiteUrl.Controls.Add(textBox);
+                TD_MSUrl.Controls.Add(textBox);
                 textBox.Attributes["autocomplete"] = "off";
                 textBox.Width = Unit.Pixel(370);
                 if (this.IsPostBack == false)
                 {
-                    textBox.Text = m_settingsData.siteUrl;
+                    textBox.Text = m_settingsData.msUrl;
                     textBox.Focus();
                 }
 
-                P_SiteUrlButton.CssClass = "SubmitButtonMini Green";
-                B_SiteUrl.Text = "save";
+                P_MSUrlButton.CssClass = "SubmitButtonMini Green";
+                B_ManagementSystemUrl.Text = "save";
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(m_settingsData.siteUrl) == false)
+                if (string.IsNullOrWhiteSpace(m_settingsData.msUrl) == false)
                 {
                     HtmlGenericControl spanStatus = new HtmlGenericControl("span");
-                    TD_SiteUrl.Controls.Add(spanStatus);
-                    spanStatus.InnerText = m_settingsData.siteUrl;
+                    TD_MSUrl.Controls.Add(spanStatus);
+                    spanStatus.InnerText = m_settingsData.msUrl;
                 }
                 else
                 {
-                    TD_SiteUrl.CssClass = "param_table val not_set";
+                    TD_MSUrl.CssClass = "param_table val not_set";
                 }
             }
 
@@ -499,7 +499,7 @@ public partial class admin_settings : System.Web.UI.Page
         }
     }
 
-    protected void SiteUrl_Click(object sender, EventArgs e)
+    protected void ManagementSystemUrl_Click(object sender, EventArgs e)
     {
         Button button = (Button)sender;
         if (button.Text.Equals("edit"))
@@ -508,8 +508,8 @@ public partial class admin_settings : System.Web.UI.Page
         {
             try
             {
-                TextBox textBox = (TextBox)TD_SiteUrl.Controls[0];
-                SoftnetRegistry.admin_setSiteUrl(textBox.Text.Trim());
+                TextBox textBox = (TextBox)TD_MSUrl.Controls[0];
+                SoftnetRegistry.admin_setManagementSystemUrl(textBox.Text.Trim());
                 Response.Redirect("~/admin/settings.aspx");
             }
             catch (SoftnetException ex)

@@ -28,7 +28,7 @@ using System.Net.Mail;
 public partial class public_clients_domain : System.Web.UI.Page
 {
     DomainDatasetForEMail m_dataset;
-    string m_siteUrl;
+    string m_mgtSystemUrl;
     string m_browsingUrlParams;
     string m_receivedEMail;
     long m_selectedClientId;
@@ -104,7 +104,7 @@ public partial class public_clients_domain : System.Web.UI.Page
             m_dataset.domainId = domainId;
             SoftnetRegistry.public_getDomainDatasetForEMail(m_receivedEMail, m_dataset);
 
-            m_siteUrl = SoftnetRegistry.settings_getSiteUrl();
+            m_mgtSystemUrl = SoftnetRegistry.settings_getManagementSystemUrl();
 
             this.Title = string.Format("{0} - Guest Clients by Email", m_dataset.domainName);
             L_EMail.Text = m_receivedEMail;
@@ -226,7 +226,7 @@ public partial class public_clients_domain : System.Web.UI.Page
                 "This message contains a url that gives access to the account of the guest client <span style='font-weight:bold'>{0}</span>.<br/>" +
                 "If you are the person who requested this url click <a href='{1}'>access the client's account</a>.";
 
-            string confirmationUrl = string.Format("{0}/public/clients/account.aspx?ckey={1}&akey={2}&hash={3}", data.siteUrl, clientData.clientKey, accessKey, HttpUtility.UrlEncode(base64Hash));
+            string confirmationUrl = string.Format("{0}/public/clients/account.aspx?ckey={1}&akey={2}&hash={3}", data.msUrl, clientData.clientKey, accessKey, HttpUtility.UrlEncode(base64Hash));
 
             var fromAddress = new MailAddress(data.emailAddress, data.siteAddress);
             var toAddress = new MailAddress(m_receivedEMail);
@@ -325,7 +325,7 @@ public partial class public_clients_domain : System.Web.UI.Page
                 "This message contains a url for creating a guest client on <span style='font-weight:bold'>{0}</span>.<br/>" +
                 "If you are the person who requested this url click <a href='{1}'>create a guest client</a>.";
 
-            string confirmationUrl = string.Format("{0}/public/clients/guest.aspx?skey={1}&tkey={2}&email={3}&time={4}&hash={5}", data.siteUrl, siteData.siteKey, transactionKey, HttpUtility.UrlEncode(m_receivedEMail), time, HttpUtility.UrlEncode(base64Hash));
+            string confirmationUrl = string.Format("{0}/public/clients/guest.aspx?skey={1}&tkey={2}&email={3}&time={4}&hash={5}", data.msUrl, siteData.siteKey, transactionKey, HttpUtility.UrlEncode(m_receivedEMail), time, HttpUtility.UrlEncode(base64Hash));
 
             var fromAddress = new MailAddress(data.emailAddress, data.siteAddress);
             var toAddress = new MailAddress(m_receivedEMail);
@@ -571,7 +571,7 @@ public partial class public_clients_domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {
@@ -1274,7 +1274,7 @@ public partial class public_clients_domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {

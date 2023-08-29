@@ -78,14 +78,14 @@ public partial class account_pwdreset : System.Web.UI.Page
                 "This message contains a url generated to reset the password for the account '{0}' on <a href='{1}/default.aspx'>{2}</a>.<br/>" +
                 "If you are the person who requested this url click <a href='{3}'>reset the password</a>.";
 
-            string confirmationUrl = string.Format("{0}/account/pwdreset2.aspx?name={1}&key={2}&hash={3}", mailingData.siteUrl, tranData.accountName, tranData.transactionKey, HttpUtility.UrlEncode(base64Hash));
+            string confirmationUrl = string.Format("{0}/account/pwdreset2.aspx?name={1}&key={2}&hash={3}", mailingData.msUrl, tranData.accountName, tranData.transactionKey, HttpUtility.UrlEncode(base64Hash));
 
             var fromAddress = new MailAddress(mailingData.emailAddress, mailingData.siteAddress);
             var toAddress = new MailAddress(tranData.email);
 
             MailMessage mailMessage = new MailMessage(fromAddress, toAddress);
             mailMessage.Subject = string.Format("Recovery mail from <{0}>", mailingData.siteAddress);
-            mailMessage.Body = string.Format(body, tranData.accountName, mailingData.siteUrl, mailingData.siteAddress, confirmationUrl);
+            mailMessage.Body = string.Format(body, tranData.accountName, mailingData.msUrl, mailingData.siteAddress, confirmationUrl);
             mailMessage.IsBodyHtml = true;
 
             smtpClient.Send(mailMessage);

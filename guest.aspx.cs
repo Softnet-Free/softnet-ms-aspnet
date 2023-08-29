@@ -292,7 +292,7 @@ public partial class guest : System.Web.UI.Page
             string body = "This message contains a url for creating a guest client on <span style='font-weight:bold'>{0}</span>.<br/>" +
                 "If you are the person who requested this url click <a href='{1}'>create a guest client</a>.";
 
-            string confirmationUrl = string.Format("{0}/public/clients/guest.aspx?skey={1}&tkey={2}&email={3}&time={4}&hash={5}", data.siteUrl, siteData.siteKey, transactionKey, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(base64Hash));
+            string confirmationUrl = string.Format("{0}/public/clients/guest.aspx?skey={1}&tkey={2}&email={3}&time={4}&hash={5}", data.msUrl, siteData.siteKey, transactionKey, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(base64Hash));
 
             var fromAddress = new MailAddress(data.emailAddress, data.siteAddress);
             var toAddress = new MailAddress(email);

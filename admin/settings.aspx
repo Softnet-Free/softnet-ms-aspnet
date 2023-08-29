@@ -28,11 +28,11 @@
                 <asp:TableHeaderCell CssClass="param_table btn" style="width:65px;" runat="server"/>
             </asp:TableHeaderRow>
             <asp:TableRow runat="server">
-                <asp:TableCell CssClass="param_table lnd" runat="server">Softnet MS URL (<span style='color:#BB6600'>scheme://address</span>)</asp:TableCell>
-                <asp:TableCell CssClass="param_table val" ID="TD_SiteUrl" runat="server"/>                    
+                <asp:TableCell CssClass="param_table lnd" runat="server">Management System URL (<span style='color:#BB6600'>scheme://address</span>)</asp:TableCell>
+                <asp:TableCell CssClass="param_table val" ID="TD_MSUrl" runat="server"/>                    
                 <asp:TableCell CssClass="param_table btn" runat="server">
-                    <asp:Panel ID="P_SiteUrlButton" runat="server" class="SubmitButtonMini Blue">
-                        <asp:Button ID="B_SiteUrl" runat="server" Text="edit" onclick="SiteUrl_Click" />
+                    <asp:Panel ID="P_MSUrlButton" runat="server" class="SubmitButtonMini Blue">
+                        <asp:Button ID="B_ManagementSystemUrl" runat="server" Text="edit" onclick="ManagementSystemUrl_Click" />
                     </asp:Panel>
                 </asp:TableCell>
             </asp:TableRow>

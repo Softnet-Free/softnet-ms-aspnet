@@ -8,7 +8,7 @@ using System.Web;
 /// </summary>
 public class SettingsData
 {
-    public string siteUrl = "";
+    public string msUrl = "";
     public string serverAddress = "";
     public string secretKey = "";
     public string anyoneCanRegister = "";    

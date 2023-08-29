@@ -25,7 +25,7 @@ using System.Web.UI.HtmlControls;
 public partial class public_myclients_domain : System.Web.UI.Page
 {
     DomainDatasetForAccount m_dataset;
-    string m_siteUrl;
+    string m_mgtSystemUrl;
     long m_editedClientId;
 
     protected void Back_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ public partial class public_myclients_domain : System.Web.UI.Page
             m_dataset.domainId = domainId;
             SoftnetRegistry.public_getDomainDatasetForAccount(this.Context.User.Identity.Name, m_dataset);
 
-            m_siteUrl = SoftnetRegistry.settings_getSiteUrl();
+            m_mgtSystemUrl = SoftnetRegistry.settings_getManagementSystemUrl();
 
             Title = string.Format("{0} - My Guest Clients", m_dataset.domainName);
 
@@ -442,7 +442,7 @@ public partial class public_myclients_domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {
@@ -1201,7 +1201,7 @@ public partial class public_myclients_domain : System.Web.UI.Page
                     HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
                     divSiteBlockItem.Controls.Add(spanGuestPage);
                     spanGuestPage.Attributes["class"] = "guest_page_url";
-                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+                    spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
                     if (siteData.statelessGuestSupported)
                     {

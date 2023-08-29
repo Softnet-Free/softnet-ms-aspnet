@@ -80,9 +80,9 @@ public partial class newuser : System.Web.UI.Page
 
             string body =
                 "This message has been sent in behalf of a person who initiated signing up with <span style='font-weight:bold'>{0}</span>.<br/>" +
-                "If you are that person click <a href='{1}'>sign up with <span style='font-weight:bold'>{2}</span></a>.";            
+                "If you are that person click <a href='{1}'>sign up with <span style='font-weight:bold'>{2}</span></a>.";
 
-            string confirmationUrl = string.Format("{0}/signup.aspx?email={1}&time={2}&hash={3}", data.siteUrl, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(hashBase64));
+            string confirmationUrl = string.Format("{0}/signup.aspx?email={1}&time={2}&hash={3}", data.msUrl, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(hashBase64));
 
             var fromAddress = new MailAddress(data.emailAddress, data.siteAddress);
             var toAddress = new MailAddress(email);

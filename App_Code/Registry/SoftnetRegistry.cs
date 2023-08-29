@@ -2883,8 +2883,8 @@ public class SoftnetRegistry
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "Softnet_MgtAdmin_GetGeneralSettings";
 
-                command.Parameters.Add("@SiteUrl", SqlDbType.NVarChar, 1024);
-                command.Parameters["@SiteUrl"].Direction = ParameterDirection.Output;
+                command.Parameters.Add("@ManagementSystemUrl", SqlDbType.NVarChar, 1024);
+                command.Parameters["@ManagementSystemUrl"].Direction = ParameterDirection.Output;
 
                 command.Parameters.Add("@ServerAddress", SqlDbType.NVarChar, 1024);
                 command.Parameters["@ServerAddress"].Direction = ParameterDirection.Output;
@@ -2927,8 +2927,8 @@ public class SoftnetRegistry
 
                 command.ExecuteNonQuery();
 
-                if (command.Parameters["@SiteUrl"].Value != DBNull.Value)
-                    settingsData.siteUrl = (string)command.Parameters["@SiteUrl"].Value;
+                if (command.Parameters["@ManagementSystemUrl"].Value != DBNull.Value)
+                    settingsData.msUrl = (string)command.Parameters["@ManagementSystemUrl"].Value;
 
                 if (command.Parameters["@ServerAddress"].Value != DBNull.Value)
                     settingsData.serverAddress = (string)command.Parameters["@ServerAddress"].Value;
@@ -2980,7 +2980,7 @@ public class SoftnetRegistry
         }
     }
 
-    public static void admin_setSiteUrl(string value)
+    public static void admin_setManagementSystemUrl(string value)
     {
         try
         {
@@ -2992,7 +2992,7 @@ public class SoftnetRegistry
                 SqlCommand command = new SqlCommand();
                 command.Connection = Connection;
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "Softnet_MgtAdmin_SetSiteUrl";
+                command.CommandText = "Softnet_MgtAdmin_SetManagementSystemUrl";
 
                 command.Parameters.Add("@ParamValue", SqlDbType.NVarChar, 1024);
                 command.Parameters["@ParamValue"].Direction = ParameterDirection.Input;
@@ -3342,7 +3342,7 @@ public class SoftnetRegistry
         }
     }
 
-    public static string settings_getSiteUrl()
+    public static string settings_getManagementSystemUrl()
     {
         try
         {
@@ -3354,17 +3354,17 @@ public class SoftnetRegistry
                 SqlCommand command = new SqlCommand();
                 command.Connection = Connection;
                 command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "Softnet_MgtSettings_GetSiteUrl";
+                command.CommandText = "Softnet_MgtSettings_GetManagementSystemUrl";
 
                 command.Parameters.Add("@ParamValue", SqlDbType.NVarChar, 1024);
                 command.Parameters["@ParamValue"].Direction = ParameterDirection.Output;
 
                 command.ExecuteNonQuery();
                 if (command.Parameters["@ParamValue"].Value == DBNull.Value)
-                    throw new GeneralSettingsSoftnetException("The site url is not specified in the general settings.");
+                    throw new GeneralSettingsSoftnetException("The Management System URL is not specified in the general settings.");
                 string paramValue = (string)command.Parameters["@ParamValue"].Value;
                 if (string.IsNullOrWhiteSpace(paramValue))
-                    throw new GeneralSettingsSoftnetException("The site url is not specified in the general settings.");
+                    throw new GeneralSettingsSoftnetException("The Management System URL is not specified in the general settings.");
                 return paramValue;
             }
         }
@@ -3684,8 +3684,8 @@ public class SoftnetRegistry
                 command.CommandType = CommandType.StoredProcedure;
                 command.CommandText = "Softnet_MgtSettings_GetMailingData";
 
-                command.Parameters.Add("@SiteUrl", SqlDbType.NVarChar, 1024);
-                command.Parameters["@SiteUrl"].Direction = ParameterDirection.Output;
+                command.Parameters.Add("@ManagementSystemUrl", SqlDbType.NVarChar, 1024);
+                command.Parameters["@ManagementSystemUrl"].Direction = ParameterDirection.Output;
 
                 command.Parameters.Add("@SecretKey", SqlDbType.NVarChar, 64);
                 command.Parameters["@SecretKey"].Direction = ParameterDirection.Output;
@@ -3710,10 +3710,10 @@ public class SoftnetRegistry
 
                 command.ExecuteNonQuery();
 
-                if (command.Parameters["@SiteUrl"].Value == DBNull.Value)
-                    throw new GeneralSettingsSoftnetException("The site url is not specified in the general settings.");
-                data.siteUrl = (string)command.Parameters["@SiteUrl"].Value;
-                Uri siteUri = new Uri(data.siteUrl);
+                if (command.Parameters["@ManagementSystemUrl"].Value == DBNull.Value)
+                    throw new GeneralSettingsSoftnetException("The Management System Url is not specified in the general settings.");
+                data.msUrl = (string)command.Parameters["@ManagementSystemUrl"].Value;
+                Uri siteUri = new Uri(data.msUrl);
                 data.siteAddress = siteUri.Host;
 
                 if (command.Parameters["@SecretKey"].Value == DBNull.Value)

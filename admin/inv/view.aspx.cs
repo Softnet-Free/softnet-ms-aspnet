@@ -57,14 +57,14 @@ public partial class admin_inv_view : System.Web.UI.Page
             string body = "<span style='font-weight:bold;'>{0}</span> invites you to sign up with <a href='{1}'>{2}</a>.<br/>" +
                 "If you like to accept the invitation click <a href='{3}'>sign up</a>";
 
-            string invitationUrl = string.Format("{0}/invitee.aspx?key={1}", mailingData.siteUrl, m_data.ikey);
+            string invitationUrl = string.Format("{0}/invitee.aspx?key={1}", mailingData.msUrl, m_data.ikey);
 
             var fromAddress = new MailAddress(mailingData.emailAddress, mailingData.siteAddress);
             var toAddress = new MailAddress(m_data.email);
 
             MailMessage mailMessage = new MailMessage(fromAddress, toAddress);
             mailMessage.Subject = string.Format("Invitation to sign up with <{0}>", mailingData.siteAddress);
-            mailMessage.Body = string.Format(body, SoftnetRegistry.getOwnerName(this.Context.User.Identity.Name), mailingData.siteUrl, mailingData.siteAddress, invitationUrl);
+            mailMessage.Body = string.Format(body, SoftnetRegistry.getOwnerName(this.Context.User.Identity.Name), mailingData.msUrl, mailingData.siteAddress, invitationUrl);
             mailMessage.IsBodyHtml = true;
 
             smtpClient.Send(mailMessage);
@@ -93,7 +93,7 @@ public partial class admin_inv_view : System.Web.UI.Page
             m_data.invitationId = invitationId;
             SoftnetRegistry.admin_getInvitationData(this.Context.User.Identity.Name, m_data);
 
-            L_Url.Text = string.Format("{0}/invitee.aspx?key={1}", SoftnetRegistry.settings_getSiteUrl(), m_data.ikey);
+            L_Url.Text = string.Format("{0}/invitee.aspx?key={1}", SoftnetRegistry.settings_getManagementSystemUrl(), m_data.ikey);
 
             if (string.IsNullOrEmpty(m_data.email))
             {

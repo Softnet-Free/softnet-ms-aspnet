@@ -365,7 +365,7 @@ public partial class suclients : System.Web.UI.Page
             if (m_siteData.guestAllowed)
             {
                 P_GuestPage.Visible = true;
-                L_GuestPage.Text = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getSiteUrl(), m_siteData.siteKey);
+                L_GuestPage.Text = string.Format("{0}/guest.aspx?site={1}", SoftnetRegistry.settings_getManagementSystemUrl(), m_siteData.siteKey);
 
                 if (m_siteData.statelessGuestSupported)
                 {

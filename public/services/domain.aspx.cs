@@ -28,7 +28,7 @@ using System.Net.Mail;
 public partial class public_services_domain : System.Web.UI.Page
 {        
     PublicDomainDataset m_dataset;
-    string m_siteUrl;
+    string m_mgtSystemUrl;
     UrlBuider m_urlBuider;
     long m_selectedSiteId;
     long m_editedClientId;
@@ -104,7 +104,7 @@ public partial class public_services_domain : System.Web.UI.Page
             string body = "This message contains a url for creating a guest client on <span style='font-weight:bold'>{0}</span>.<br/>" +
                 "If you are the person who requested this url click <a href='{1}'>create a guest client</a>.";
 
-            string confirmationUrl = string.Format("{0}/public/clients/guest.aspx?skey={1}&tkey={2}&email={3}&time={4}&hash={5}", data.siteUrl, siteData.siteKey, transactionKey, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(base64Hash));
+            string confirmationUrl = string.Format("{0}/public/clients/guest.aspx?skey={1}&tkey={2}&email={3}&time={4}&hash={5}", data.msUrl, siteData.siteKey, transactionKey, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(base64Hash));
 
             var fromAddress = new MailAddress(data.emailAddress, data.siteAddress);
             var toAddress = new MailAddress(email);
@@ -183,9 +183,9 @@ public partial class public_services_domain : System.Web.UI.Page
             {
                 m_dataset = new PublicDomainDataset();
                 m_dataset.domainId = domainId;
-                SoftnetRegistry.public_getDomainDataset(this.Context.User.Identity.Name, m_dataset);                
+                SoftnetRegistry.public_getDomainDataset(this.Context.User.Identity.Name, m_dataset);
 
-                m_siteUrl = SoftnetRegistry.settings_getSiteUrl();
+                m_mgtSystemUrl = SoftnetRegistry.settings_getManagementSystemUrl();
                 long.TryParse(HttpUtility.ParseQueryString(this.Request.Url.Query).Get("sid"), out m_selectedSiteId);
                 long.TryParse(HttpUtility.ParseQueryString(this.Request.Url.Query).Get("cid"), out m_editedClientId);
 
@@ -207,7 +207,7 @@ public partial class public_services_domain : System.Web.UI.Page
                 m_dataset.domainId = domainId;
                 SoftnetRegistry.public_getDomainDataset(m_dataset);
 
-                m_siteUrl = SoftnetRegistry.settings_getSiteUrl();
+                m_mgtSystemUrl = SoftnetRegistry.settings_getManagementSystemUrl();
                 long.TryParse(HttpUtility.ParseQueryString(this.Request.Url.Query).Get("sid"), out m_selectedSiteId);
 
                 foreach (SiteData siteData in m_dataset.sites)
@@ -578,7 +578,7 @@ public partial class public_services_domain : System.Web.UI.Page
             HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
             divSiteBlockItem.Controls.Add(spanGuestPage);
             spanGuestPage.Attributes["class"] = "guest_page_url";
-            spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+            spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
             if (siteData.statelessGuestSupported)
             {
@@ -1221,7 +1221,7 @@ public partial class public_services_domain : System.Web.UI.Page
         HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
         divSiteBlockItem.Controls.Add(spanGuestPage);
         spanGuestPage.Attributes["class"] = "guest_page_url";
-        spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+        spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
         if (siteData.statelessGuestSupported)
         {
@@ -1843,7 +1843,7 @@ public partial class public_services_domain : System.Web.UI.Page
             HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
             divSiteBlockItem.Controls.Add(spanGuestPage);
             spanGuestPage.Attributes["class"] = "guest_page_url";
-            spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+            spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
             if (siteData.statelessGuestSupported)
             {
@@ -2181,7 +2181,7 @@ public partial class public_services_domain : System.Web.UI.Page
         HtmlGenericControl spanGuestPage = new HtmlGenericControl("span");
         divSiteBlockItem.Controls.Add(spanGuestPage);
         spanGuestPage.Attributes["class"] = "guest_page_url";
-        spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_siteUrl, siteData.siteKey);
+        spanGuestPage.InnerText = string.Format("{0}/guest.aspx?site={1}", m_mgtSystemUrl, siteData.siteKey);
 
         if (siteData.statelessGuestSupported)
         {

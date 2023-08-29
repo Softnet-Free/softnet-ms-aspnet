@@ -81,14 +81,14 @@ public partial class account_setemail : System.Web.UI.Page
                 "This message has been sent in behalf of a person who initiated the email confirmation on <a href='{0}/default.aspx'>{1}</a>.<br/>" +
                 "If you are that person click <a href='{2}'>confirm this email</a>";
 
-            string confirmationUrl = string.Format("{0}/account/setemail2.aspx?name={1}&email={2}&key={3}&hash={4}", mailingData.siteUrl, accountName, HttpUtility.UrlEncode(email), tranData.transactionKey, HttpUtility.UrlEncode(base64Hash));
+            string confirmationUrl = string.Format("{0}/account/setemail2.aspx?name={1}&email={2}&key={3}&hash={4}", mailingData.msUrl, accountName, HttpUtility.UrlEncode(email), tranData.transactionKey, HttpUtility.UrlEncode(base64Hash));
 
             var fromAddress = new MailAddress(mailingData.emailAddress, mailingData.siteAddress);
             var toAddress = new MailAddress(email);
 
             MailMessage mailMessage = new MailMessage(fromAddress, toAddress);
             mailMessage.Subject = string.Format("Confirmation mail from <{0}>", mailingData.siteAddress);
-            mailMessage.Body = string.Format(body, mailingData.siteUrl, mailingData.siteAddress, confirmationUrl);
+            mailMessage.Body = string.Format(body, mailingData.msUrl, mailingData.siteAddress, confirmationUrl);
             mailMessage.IsBodyHtml = true;
 
             smtpClient.Send(mailMessage);

@@ -212,7 +212,7 @@ public partial class public_clients_domains : System.Web.UI.Page
                 "This message contains a url for browsing guest clients on <span style='font-weight:bold'>{0}</span>.<br/>" +
                 "If you are the person who requested this url click <a href='{1}'>browse my guest clients</a>. ";
 
-            string browsingUrl = string.Format("{0}/public/clients/domains.aspx?tkey={1}&email={2}&time={3}&hash={4}", data.siteUrl, transactionKey, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(base64Hash));
+            string browsingUrl = string.Format("{0}/public/clients/domains.aspx?tkey={1}&email={2}&time={3}&hash={4}", data.msUrl, transactionKey, HttpUtility.UrlEncode(email), time, HttpUtility.UrlEncode(base64Hash));
 
             var fromAddress = new MailAddress(data.emailAddress, data.siteAddress);
             var toAddress = new MailAddress(email);

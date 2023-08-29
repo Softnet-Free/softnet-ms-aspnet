@@ -64,7 +64,7 @@ public partial class admin_inv_edit : System.Web.UI.Page
             m_data.invitationId = invitationId;
             SoftnetRegistry.admin_getInvitationData(this.Context.User.Identity.Name, m_data);
 
-            L_Url.Text = string.Format("{0}/invitee.aspx?key={1}", SoftnetRegistry.settings_getSiteUrl(), m_data.ikey);
+            L_Url.Text = string.Format("{0}/invitee.aspx?key={1}", SoftnetRegistry.settings_getManagementSystemUrl(), m_data.ikey);
 
             if (this.IsPostBack == false)
             {

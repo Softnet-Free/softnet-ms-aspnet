@@ -52,7 +52,7 @@ public partial class account_setemail2 : System.Web.UI.Page
         try
         {
             string receivedAccountName = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("name");
-            if (string.IsNullOrWhiteSpace(receivedAccountName) || m_receivedEMail.Length > 256)
+            if (string.IsNullOrWhiteSpace(receivedAccountName) || receivedAccountName.Length > 256)
                 throw new ArgumentSoftnetException("The confirmation url has an invalid format.");
 
             m_receivedEMail = HttpUtility.ParseQueryString(this.Request.Url.Query).Get("email");

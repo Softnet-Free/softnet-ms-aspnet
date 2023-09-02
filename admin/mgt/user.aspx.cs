@@ -133,7 +133,7 @@ public partial class admin_mgt_user : System.Web.UI.Page
                 TButton buttonRemoveRole = new TButton();
                 divRemoveRoleButton.Controls.Add(buttonRemoveRole);
                 buttonRemoveRole.Args.Add(m_memberData);
-                buttonRemoveRole.Text = "remove the role Provider";
+                buttonRemoveRole.Text = "revoke the Provider role";
                 buttonRemoveRole.ID = "RemoveRole";
                 buttonRemoveRole.Click += new EventHandler(RemoveRoleProvider_Click);
             }
@@ -148,7 +148,7 @@ public partial class admin_mgt_user : System.Web.UI.Page
                 TButton buttonAssignRole = new TButton();
                 divAssignRoleButton.Controls.Add(buttonAssignRole);
                 buttonAssignRole.Args.Add(m_memberData);
-                buttonAssignRole.Text = "assign the role Provider";
+                buttonAssignRole.Text = "assign the Provider role";
                 buttonAssignRole.ID = "AssignRole";
                 buttonAssignRole.Click += new EventHandler(AssignRoleProvider_Click);
             }

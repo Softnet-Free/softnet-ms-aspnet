@@ -14,7 +14,7 @@
 *   limitations under the License.
 --%>
 
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="setemail2.aspx.cs" Inherits="account_setemail2" EnableViewState="false" Title="Set Account EMail" MasterPageFile="~/Site.master" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="setemail2.aspx.cs" Inherits="account_setemail2" EnableViewState="false" Title="Email Setup - My Account Settings" MasterPageFile="~/Site.master" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -22,7 +22,7 @@
     <div style="padding-left: 10px; margin-bottom: 5px">
         <h3>my account settings</h3>
     </div>  
-    <h1 style="text-align: center;">set email</h1>
+    <h1 style="text-align: center;">e-mail setup</h1>
 
     <table class="wide_table" style="margin-top: 20px;"><tr>
         <td class="wide_table" style="width: 50%"></td>

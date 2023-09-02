@@ -100,11 +100,11 @@ public partial class account_setemail2 : System.Web.UI.Page
 
             if (string.IsNullOrEmpty(m_tranData.email) == false)
             {
-                L_Action.Text = string.Format("Currently, the recovery email of the account <span style='color:#D2691E'>{0}</span> is <span style='color:blue'>{1}</span>. If you like to change it to <span style='color:blue'>{2}</span> click the button <span style='font-weight:bold'>apply</span>.", receivedAccountName, m_tranData.email, m_receivedEMail);
+                L_Action.Text = string.Format("Currently, the recovery email of the account <span style='color:#D2691E'>{0}</span> is <span style='color:blue'>{1}</span>. If you like to change it to <span style='color:blue'>{2}</span> click the <span style='font-weight:bold'>apply</span> button.", receivedAccountName, m_tranData.email, m_receivedEMail);
             }
             else
             {
-                L_Action.Text = string.Format("Currently, the account <span style='color:#D2691E'>{0}</span> has no recovery email. If you want to set the email <span style='color:blue'>{1}</span> click the button <span style='font-weight:bold'>apply</span>.", receivedAccountName, m_receivedEMail);            
+                L_Action.Text = string.Format("Currently, the account <span style='color:#D2691E'>{0}</span> has no recovery email. If you want to set the email <span style='color:blue'>{1}</span> click the <span style='font-weight:bold'>apply</span> button.", receivedAccountName, m_receivedEMail);            
             }
         }
         catch (SoftnetException ex)

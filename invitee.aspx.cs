@@ -100,6 +100,28 @@ public partial class invitee : System.Web.UI.Page
                 return;
             }
 
+            string email = TB_EMail.Text.Trim();
+            if (email.Length != TB_EMail.Text.Length)
+            {
+                L_ErrorMessage.Visible = true;
+                L_ErrorMessage.Text = "The email address must not contain leading or trailing whitespace characters.";
+                return;
+            }
+
+            if (email.Length > 256)
+            {
+                L_ErrorMessage.Visible = true;
+                L_ErrorMessage.Text = "The length of an email address must not be greater than 256 characters.";
+                return;
+            }
+
+            if (EMailValidator.IsValid(email) == false)
+            {
+                L_ErrorMessage.Visible = true;
+                L_ErrorMessage.Text = "Incorrect email format.";
+                return;            
+            }
+
             byte[] password = Encoding.Unicode.GetBytes(password_text);
             byte[] salt = Randomizer.generateOctetString(16);
             byte[] salt_and_password = new byte[password.Length + salt.Length];
@@ -112,7 +134,7 @@ public partial class invitee : System.Web.UI.Page
             string salt_b64 = Convert.ToBase64String(salt);
             string salted_password_b64 = Convert.ToBase64String(salted_password);
 
-            SoftnetRegistry.account_signupByInvitation(ikey, userFullName, accountName, salted_password_b64, salt_b64);
+            SoftnetRegistry.account_signupByInvitation(ikey, userFullName, accountName, email, salted_password_b64, salt_b64);
             Response.Redirect("~/account/login.aspx");
         }
         catch (SoftnetException ex)
@@ -129,19 +151,11 @@ public partial class invitee : System.Web.UI.Page
             if (string.IsNullOrEmpty(ikey))
                 throw new ArgumentSoftnetException("The invitation key has not been specified.");
 
-            InvitationData data = new InvitationData();
-            data.ikey = ikey;
-            SoftnetRegistry.getInvitationData(data);
-            if (data.status == 1)
+            int status = SoftnetRegistry.account_getInvitationStatus(ikey);
+            if (status == 1)
                 throw new ArgumentSoftnetException("The invitation has already been applied.");
-            if (data.status == 2)
+            if (status == 2)
                 throw new ArgumentSoftnetException("Sorry, the invitation has expired.");
-
-            if (string.IsNullOrEmpty(data.email) == false)
-            {
-                TD_EMail.Visible = true;
-                TB_EMail.Text = data.email;
-            }
         }
         catch (SoftnetException ex)
         {

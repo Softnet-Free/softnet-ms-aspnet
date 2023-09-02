@@ -2383,6 +2383,52 @@ public class SoftnetRegistry
         }
     }
 
+    public static int account_getInvitationStatus(string invKey)
+    {
+        try
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["Softnet"].ConnectionString;
+            using (SqlConnection Connection = new SqlConnection(connectionString))
+            {
+                Connection.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = Connection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Softnet_MgtAccount_GetInvitationStatus";
+
+                command.Parameters.Add("@IKey", SqlDbType.VarChar, 64);
+                command.Parameters["@IKey"].Direction = ParameterDirection.Input;
+                command.Parameters["@IKey"].Value = invKey;
+
+                command.Parameters.Add("@Status", SqlDbType.Int);
+                command.Parameters["@Status"].Direction = ParameterDirection.Output;
+
+                command.Parameters.Add("@ReturnValue", SqlDbType.Int);
+                command.Parameters["@ReturnValue"].Direction = ParameterDirection.ReturnValue;
+
+                command.ExecuteNonQuery();
+                int resutCode = (int)command.Parameters["@ReturnValue"].Value;
+                if (resutCode != 0)
+                {
+                    if (resutCode == -1)
+                        throw new ArgumentSoftnetException("The invitation key not found.");
+                    throw new DataDefinitionSoftnetException();
+                }
+
+                return (int)command.Parameters["@Status"].Value;
+            }
+        }
+        catch (SqlException ex)
+        {
+            throw new DatabaseSoftnetException(ex.Message);
+        }
+        catch (ConfigurationErrorsException ex)
+        {
+            throw new ConfigSoftnetException(ex.Message);
+        }
+    }
+
     public static void account_signupUser(string userFullName, string accountName, string email, string saltedPassword, string salt)
     {
         try
@@ -2448,7 +2494,7 @@ public class SoftnetRegistry
         }
     }
 
-    public static void account_signupByInvitation(string ikey, string userFullName, string accountName, string saltedPassword, string salt)
+    public static void account_signupByInvitation(string ikey, string userFullName, string accountName, string email, string saltedPassword, string salt)
     {
         try
         {
@@ -2474,6 +2520,10 @@ public class SoftnetRegistry
                 command.Parameters["@AccountName"].Direction = ParameterDirection.Input;
                 command.Parameters["@AccountName"].Value = accountName;
 
+                command.Parameters.Add("@EMail", SqlDbType.NVarChar, 256);
+                command.Parameters["@EMail"].Direction = ParameterDirection.Input;
+                command.Parameters["@EMail"].Value = email;
+
                 command.Parameters.Add("@SaltedPassword", SqlDbType.NVarChar, 128);
                 command.Parameters["@SaltedPassword"].Direction = ParameterDirection.Input;
                 command.Parameters["@SaltedPassword"].Value = saltedPassword;
@@ -2494,8 +2544,10 @@ public class SoftnetRegistry
                     if (resutCode == 2)
                         throw new ArgumentSoftnetException("Sorry, the invitation has expired.");
                     if (resutCode == 3)
-                        throw new ArgumentSoftnetException(string.Format("The account name '{0}' is already in use. Try another one.", accountName));
+                        throw new ArgumentSoftnetException(string.Format("The email '{0}' is already in use. Try another one.", email));
                     if (resutCode == 4)
+                        throw new ArgumentSoftnetException(string.Format("The account name '{0}' is already in use. Try another one.", accountName));
+                    if (resutCode == 5)
                         throw new OperationFailedSoftnetException("Failed to create an account.");
                     if (resutCode == -1)
                         throw new ArgumentSoftnetException("The invitation not found.");
@@ -3796,56 +3848,6 @@ public class SoftnetRegistry
                     throw new GeneralSettingsSoftnetException("The secret key is not specified in the general settings.");
 
                 data.Second = (long)command.Parameters["@CurrentTime"].Value;
-            }
-        }
-        catch (SqlException ex)
-        {
-            throw new DatabaseSoftnetException(ex.Message);
-        }
-        catch (ConfigurationErrorsException ex)
-        {
-            throw new ConfigSoftnetException(ex.Message);
-        }
-    }
-
-    public static void getInvitationData(InvitationData data)
-    {
-        try
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings["Softnet"].ConnectionString;
-            using (SqlConnection Connection = new SqlConnection(connectionString))
-            {
-                Connection.Open();
-
-                SqlCommand command = new SqlCommand();
-                command.Connection = Connection;
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "Softnet_Mgt_GetInvitationData";
-
-                command.Parameters.Add("@IKey", SqlDbType.VarChar, 64);
-                command.Parameters["@IKey"].Direction = ParameterDirection.Input;
-                command.Parameters["@IKey"].Value = data.ikey;
-
-                command.Parameters.Add("@EMail", SqlDbType.NVarChar, 256);
-                command.Parameters["@EMail"].Direction = ParameterDirection.Output;
-
-                command.Parameters.Add("@Status", SqlDbType.Int);
-                command.Parameters["@Status"].Direction = ParameterDirection.Output;
-
-                command.Parameters.Add("@ReturnValue", SqlDbType.Int);
-                command.Parameters["@ReturnValue"].Direction = ParameterDirection.ReturnValue;
-
-                command.ExecuteNonQuery();
-                int resutCode = (int)command.Parameters["@ReturnValue"].Value;
-                if (resutCode != 0)
-                {
-                    if (resutCode == -1)
-                        throw new ArgumentSoftnetException("The invitation key not found.");
-                    throw new DataDefinitionSoftnetException();
-                }
-
-                data.email = (string)command.Parameters["@EMail"].Value;
-                data.status = (int)command.Parameters["@Status"].Value;
             }
         }
         catch (SqlException ex)

@@ -29,7 +29,7 @@
                 <tr>
                     <td class="wide_table">
                         <span class="white_caption">Your name</span>
-                        <asp:TextBox ID="TB_InviteeName" AutoComplete="off" runat="server" Style="border-width: 0px; outline:none; width:494px; margin: 0px; padding: 3px;"></asp:TextBox>                        
+                        <asp:TextBox ID="TB_InviteeName" runat="server" Style="border-width: 0px; outline:none; width:494px; margin: 0px; padding: 3px;"></asp:TextBox>                        
                     </td>
                     <td class="wide_table" style="vertical-align: bottom">
                         <asp:RequiredFieldValidator ID="FullNameRequired" runat="server" ControlToValidate="TB_InviteeName" 
@@ -40,7 +40,7 @@
                 <tr>
                     <td class="wide_table" style="padding-top: 15px">
                         <span class="white_caption">Account name</span>
-                        <asp:TextBox ID="TB_AccountName" AutoComplete="off" runat="server" Style="border-width: 0px; outline:none; width:494px; margin: 0px; padding: 3px;"></asp:TextBox>
+                        <asp:TextBox ID="TB_AccountName" runat="server" Style="border-width: 0px; outline:none; width:494px; margin: 0px; padding: 3px;"></asp:TextBox>
                     </td>
                     <td class="wide_table" style="vertical-align: bottom">
                         <asp:RequiredFieldValidator ID="AccountNameRequired" runat="server" ControlToValidate="TB_AccountName" 
@@ -51,7 +51,7 @@
                 <tr>
                     <td class="wide_table" style="padding-top: 15px">
                         <span class="white_caption">Password</span>
-                        <asp:TextBox ID="TB_Password" AutoComplete="off" runat="server" 
+                        <asp:TextBox ID="TB_Password" runat="server" 
                             Style="background-color: White; border-width: 0px; outline:none; width:494px; margin: 0px; padding: 3px;"></asp:TextBox>
                     </td> 
                     <td class="wide_table" style="vertical-align: bottom">                                              
@@ -61,12 +61,16 @@
                     </td>                                        
                 </tr>
                 <tr>
-                    <td class="wide_table" style="padding-top: 15px" ID="TD_EMail" visible="false" runat="server">
+                    <td class="wide_table" style="padding-top: 15px" ID="TD_EMail" runat="server">
                         <span class="white_caption">Email</span>
-                        <asp:TextBox ID="TB_EMail" runat="server" ReadOnly="true" 
-                            Style="background-color: White; border-width: 0px; background-color: #E1E1E1; outline:none; width:494px; margin: 0px; padding: 3px;"></asp:TextBox>
+                        <asp:TextBox ID="TB_EMail" runat="server"
+                            Style="background-color: White; border-width: 0px; outline:none; width:494px; margin: 0px; padding: 3px;"></asp:TextBox>
                     </td> 
-                    <td class="wide_table"></td>                                        
+                    <td class="wide_table" style="vertical-align: bottom">                                              
+                        <asp:RequiredFieldValidator ID="EMailRequired" runat="server" ControlToValidate="TB_EMail" 
+                                     CssClass="failureNotification" ErrorMessage="Email is required." 
+                                     ValidationGroup="SignUpUserValidationGroup">&nbsp;*&nbsp;</asp:RequiredFieldValidator>                        
+                    </td> 
                 </tr>
                 </table>
 

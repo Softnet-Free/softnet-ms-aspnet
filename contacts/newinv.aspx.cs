@@ -174,7 +174,7 @@ public partial class contacts_newinv : System.Web.UI.Page
             if (string.IsNullOrEmpty(evt) == false && string.IsNullOrEmpty(userName) == false)
             {
                 if (evt.Equals("1"))
-                    L_Message.Text = string.Format("An invitation is sent to <span style='color:black'>{0}</span>.", userName);
+                    L_Message.Text = string.Format("The invitation has been sent to <span style='color:black'>{0}</span>.", userName);
                 else if (evt.Equals("2"))
                     L_Message.Text = string.Format("The contact <span style='color:black'>{0}</span> has been created.", userName);
                 else if (evt.Equals("3"))
